@@ -1,7 +1,7 @@
 {
   "TRENCHCRUSADE": {
     "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
+      "Mov": { "long": "Move", "abbr": "mov" },
       "Con": { "long": "Constitution", "abbr": "con" },
       "Dex": { "long": "Dexterity", "abbr": "dex" },
       "Int": { "long": "Intelligence", "abbr": "int" },
@@ -9,7 +9,7 @@
       "Cha": { "long": "Charisma", "abbr": "cha" }
     },
     "SheetLabels": {
-      "Actor": "TrenchCrusade Actor Sheet",
+      "Actor": "TrenchCrusade Unit Sheet",
       "Item": "TrenchCrusade Item Sheet"
     },
     "Item": {

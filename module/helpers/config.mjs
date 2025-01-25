@@ -5,7 +5,7 @@ export const TRENCHCRUSADE = {};
  * @type {Object}
  */
 TRENCHCRUSADE.abilities = {
-  str: 'TRENCHCRUSADE.Ability.Str.long',
+  mov: 'TRENCHCRUSADE.Ability.Mov.long',
   dex: 'TRENCHCRUSADE.Ability.Dex.long',
   con: 'TRENCHCRUSADE.Ability.Con.long',
   int: 'TRENCHCRUSADE.Ability.Int.long',
@@ -14,7 +14,7 @@ TRENCHCRUSADE.abilities = {
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
-  str: 'TRENCHCRUSADE.Ability.Str.abbr',
+  mov: 'TRENCHCRUSADE.Ability.Mov.abbr',
   dex: 'TRENCHCRUSADE.Ability.Dex.abbr',
   con: 'TRENCHCRUSADE.Ability.Con.abbr',
   int: 'TRENCHCRUSADE.Ability.Int.abbr',
