@@ -27,23 +27,44 @@
           </div>
         </div>
 
+        <div class="resource flex-group-center">
+          <table>
+            <thead>
+              <tr>
+                <th>Ducats</th>
+                <th>Glory</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><input type="text" name="system.cost.ducats" value="{{system.cost.ducats}}" data-dtype="Number"/></th>
+                <th><input type="text" name="system.cost.glory" value="{{system.cost.glory}}" data-dtype="Number"/></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
       <div class="abilities_table">
           <table>
-            <tr>
-              {{#each system.abilities as |ability key|}}
-                <th>
-                  <label for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>                
-                </th>
-              {{/each}}
-            </tr>    
-            <tr>
-              {{#each system.abilities as |ability key|}}
-                <td class="align-center ">
-                  <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>  
-                </td>
-              {{/each}}
-            </tr>          
+            <thead>
+              <tr>
+                {{#each system.abilities as |ability key|}}
+                  <th>
+                    <label for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>                
+                  </th>
+                {{/each}}
+              </tr>    
+            </thead>
+            <tbody>
+              <tr>
+                {{#each system.abilities as |ability key|}}
+                  <td class="align-center ">
+                    <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>  
+                  </td>
+                {{/each}}
+              </tr>          
+            </tbody>
           </table>
       </div>
 
