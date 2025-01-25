@@ -49,10 +49,10 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     // Adding a pointer to CONFIG.TRENCHCRUSADE
     context.config = CONFIG.TRENCHCRUSADE;
 
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
+    // Prepare unit data and items.
+    if (actorData.type == 'unit') {
       this._prepareItems(context);
-      this._prepareCharacterData(context);
+      this._prepareUnitData(context);
     }
 
     // Prepare NPC data and items.
@@ -87,12 +87,12 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
   }
 
   /**
-   * Character-specific context modifications
+   * Unit-specific context modifications
    *
    * @param {object} context The context object to mutate
    */
-  _prepareCharacterData(context) {
-    // This is where you can enrich character-specific editor fields
+  _prepareUnitData(context) {
+    // This is where you can enrich Unit-specific editor fields
     // or setup anything else that's specific to this type
   }
 

@@ -1,6 +1,6 @@
 // Export Actors
 export {default as TrenchCrusadeActorBase} from "./base-actor.mjs";
-export {default as TrenchCrusadeCharacter} from "./actor-character.mjs";
+export {default as TrenchCrusadeUnit} from "./actor-unit.mjs";
 export {default as TrenchCrusadeNPC} from "./actor-npc.mjs";
 
 // Export Items

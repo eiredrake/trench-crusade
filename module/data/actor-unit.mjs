@@ -1,6 +1,6 @@
 import TrenchCrusadeActorBase from "./base-actor.mjs";
 
-export default class TrenchCrusadeCharacter extends TrenchCrusadeActorBase {
+export default class TrenchCrusadeUnit extends TrenchCrusadeActorBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -8,7 +8,7 @@ export default class TrenchCrusadeCharacter extends TrenchCrusadeActorBase {
     const schema = super.defineSchema();
 
     schema.attributes = new fields.SchemaField({
-      level: new fields.SchemaField({
+        level: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 1 })
       }),
     });
