@@ -2,9 +2,9 @@
   "TRENCHCRUSADE": {
     "Ability": {
       "Mov": { "long": "Move", "abbr": "mov" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
+      "Mel": { "long": "Melee", "abbr": "mel" },
+      "Ran": { "long": "Ranged", "abbr": "ran" },
+      "Arm": { "long": "Armor", "abbr": "arm" },
       "Wis": { "long": "Wisdom", "abbr": "wis" },
       "Cha": { "long": "Charisma", "abbr": "cha" }
     },

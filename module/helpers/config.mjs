@@ -6,18 +6,18 @@ export const TRENCHCRUSADE = {};
  */
 TRENCHCRUSADE.abilities = {
   mov: 'TRENCHCRUSADE.Ability.Mov.long',
-  dex: 'TRENCHCRUSADE.Ability.Dex.long',
-  con: 'TRENCHCRUSADE.Ability.Con.long',
-  int: 'TRENCHCRUSADE.Ability.Int.long',
+  mel: 'TRENCHCRUSADE.Ability.Mel.long',
+  ran: 'TRENCHCRUSADE.Ability.Ran.long',
+  arm: 'TRENCHCRUSADE.Ability.Arm.long',
   wis: 'TRENCHCRUSADE.Ability.Wis.long',
   cha: 'TRENCHCRUSADE.Ability.Cha.long',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
   mov: 'TRENCHCRUSADE.Ability.Mov.abbr',
-  dex: 'TRENCHCRUSADE.Ability.Dex.abbr',
-  con: 'TRENCHCRUSADE.Ability.Con.abbr',
-  int: 'TRENCHCRUSADE.Ability.Int.abbr',
+  mel: 'TRENCHCRUSADE.Ability.Mel.abbr',
+  ran: 'TRENCHCRUSADE.Ability.Ran.abbr',
+  arm: 'TRENCHCRUSADE.Ability.Arm.abbr',
   wis: 'TRENCHCRUSADE.Ability.Wis.abbr',
   cha: 'TRENCHCRUSADE.Ability.Cha.abbr',
 };
