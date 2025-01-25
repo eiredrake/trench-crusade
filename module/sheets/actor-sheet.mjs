@@ -39,6 +39,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     // editable, the items array, and the effects array.
     const context = super.getData();
 
+    context.factions = CONFIG.TRENCHCRUSADE.factionsChoices;
+
     // Use a safe clone of the actor data for further operations.
     const actorData = this.document.toPlainObject();
 
@@ -59,6 +61,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     if (actorData.type == 'npc') {
       this._prepareItems(context);
     }
+
+    this.actor.faction = actorData.faction;
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons

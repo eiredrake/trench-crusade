@@ -17,3 +17,9 @@ TRENCHCRUSADE.abilityAbbreviations = {
   ran: 'TRENCHCRUSADE.Ability.Ran.abbr',
   arm: 'TRENCHCRUSADE.Ability.Arm.abbr'
 };
+
+TRENCHCRUSADE.factionsChoices = {
+  "her": 'TRENCHCRUSADE.Factions.her',
+  "tre": 'TRENCHCRUSADE.Factions.tre',
+  "iro": 'TRENCHCRUSADE.Factions.iro',
+};

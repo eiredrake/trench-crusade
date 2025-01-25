@@ -7,6 +7,8 @@ export default class TrenchCrusadeActorBase extends TrenchCrusadeDataModel {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = {};
 
+    schema.faction = new fields.StringField({ required: true, blank: true }); 
+
     schema.blood = new fields.SchemaField({
       value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 6 }),
     });
@@ -20,6 +22,7 @@ export default class TrenchCrusadeActorBase extends TrenchCrusadeDataModel {
       ducats: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0}),
       glory: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0}),
     });
+
 
     return schema;
   }

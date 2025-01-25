@@ -1,5 +1,10 @@
 {
   "TRENCHCRUSADE": {
+    "Factions" :{
+      "her": "Heretic Legion",
+      "tre": "Trench Pilgrims",
+      "iro" : "The Iron Sultanate"
+    },
     "Ability": {
       "Mov": { "long": "Move", "abbr": "mov" },
       "Mel": { "long": "Melee", "abbr": "mel" },
@@ -24,7 +29,6 @@
       "Inactive": "Inactive Effects"
     }
   },
-
   "TYPES": {
     "Actor": {
       "unit": "unit",

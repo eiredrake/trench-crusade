@@ -9,7 +9,7 @@ export default class TrenchCrusadeUnit extends TrenchCrusadeActorBase {
 
     schema.attributes = new fields.SchemaField({
         level: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 1 })
+        value: new fields.NumberField({ ...requiredInteger, initial: 0 })
       }),
     });
 
