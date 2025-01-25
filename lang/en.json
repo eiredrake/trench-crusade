@@ -4,9 +4,7 @@
       "Mov": { "long": "Move", "abbr": "mov" },
       "Mel": { "long": "Melee", "abbr": "mel" },
       "Ran": { "long": "Ranged", "abbr": "ran" },
-      "Arm": { "long": "Armor", "abbr": "arm" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Arm": { "long": "Armor", "abbr": "arm" }
     },
     "SheetLabels": {
       "Actor": "TrenchCrusade Unit Sheet",

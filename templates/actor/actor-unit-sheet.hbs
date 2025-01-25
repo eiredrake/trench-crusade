@@ -28,17 +28,36 @@
         </div>
 
       </div>
+      <div class="abilities_table">
+          <table>
+            <tr>
+              {{#each system.abilities as |ability key|}}
+                <th>
+                  <label for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>                
+                </th>
+              {{/each}}
+            </tr>    
+            <tr>
+              {{#each system.abilities as |ability key|}}
+                <td class="align-center ">
+                  <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>  
+                </td>
+              {{/each}}
+            </tr>          
+          </table>
+      </div>
+
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities flexcol">
+          {{!-- <div class="abilities flexcol">
             {{#each system.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
               <label for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
               <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
             </div>
             {{/each}}
-          </div>
+          </div> --}}
         </aside>      
     </div>
   </header>
