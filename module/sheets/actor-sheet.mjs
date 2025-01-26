@@ -65,6 +65,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
 
     this.actor.faction = actorData.faction;
     this.actor.keywords = actorData.keywords;
+    this.actor.flavorText = actorData.flavorText;
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
