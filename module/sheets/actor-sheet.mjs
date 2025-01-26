@@ -40,7 +40,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     const context = super.getData();
 
     context.factions = CONFIG.TRENCHCRUSADE.factionsChoices;
-    context.keywords = CONFIG.TRENCHCRUSADE.keywordsChoices;
+    context.keywords = Object.entries(CONFIG.TRENCHCRUSADE.keywordsChoices).map(([value, label]) => ({value, label}));
     // Use a safe clone of the actor data for further operations.
     const actorData = this.document.toPlainObject();
 
