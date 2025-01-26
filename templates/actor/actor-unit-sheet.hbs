@@ -11,17 +11,17 @@
             <select name="system.faction">
               {{ selectOptions factions selected=system.faction localize=true }}
             </select>
+            <label>
+              {{ localize (lookup @root.config.mySheetLabels "requ") }}          
+              {{ formInput actor.system.schema.fields.requiredUnit value=system.requiredUnit }}
+            </label>            
           </div>
           <div>
               {{formInput actor.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}            
           </div>
         </div>
         <div>
-          
-          <label>
-            {{ localize (lookup @root.config.mySheetLabels "requ") }}          
-            {{ formInput actor.system.schema.fields.requiredUnit value=system.requiredUnit }}
-          </label>
+        
           
         </div>
       </h2>
