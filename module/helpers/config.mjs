@@ -11,6 +11,11 @@ TRENCHCRUSADE.abilities = {
   arm: 'TRENCHCRUSADE.Ability.Arm.long'
 };
 
+TRENCHCRUSADE.mySheetLabels = {
+  requ : 'TRENCHCRUSADE.MySheetLabels.requ',
+  blom : 'TRENCHCRUSADE.MySheetLabels.blom'
+};
+
 TRENCHCRUSADE.abilityAbbreviations = {
   mov: 'TRENCHCRUSADE.Ability.Mov.abbr',
   mel: 'TRENCHCRUSADE.Ability.Mel.abbr',
@@ -53,3 +58,5 @@ TRENCHCRUSADE.keywordsChoices = {
   "sul" : "TRENCHCRUSADE.Keywords.sul",
   "tou" : "TRENCHCRUSADE.Keywords.tou",
 };
+
+

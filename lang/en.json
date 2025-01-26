@@ -5,6 +5,10 @@
       "tre": "Trench Pilgrims",
       "iro" : "The Iron Sultanate"
     },
+    "MySheetLabels" : {
+      "requ" : "Required Unit",
+      "blom" : "Blood Markers"
+    },
     "Keywords": {
       "art" : "ARTIFICIAL",
       "ass" : "ASSAULT",

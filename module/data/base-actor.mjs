@@ -9,6 +9,7 @@ export default class TrenchCrusadeActorBase extends TrenchCrusadeDataModel {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = {};
 
+    schema.requiredUnit = new fields.BooleanField( { required: false } );
     schema.faction = new fields.StringField({ required: true, blank: true }); 
     schema.keywords = new fields.SetField(setOptions());
 
