@@ -6,10 +6,18 @@
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       <h2 class="faction">
-        <select name="system.faction">
-          {{ selectOptions factions selected=system.faction localize=true }}
-        </select>
-
+        <div>
+          <div>
+            <select name="system.faction">
+              {{ selectOptions factions selected=system.faction localize=true }}
+            </select>
+          </div>
+          <div>
+            <multi-select name="system.keyword">
+              {{ selectOptions keywords selected=system._source.keywords localize=true }}
+            </multi-select>
+          </div>
+        </div>
 
       </h2>
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,

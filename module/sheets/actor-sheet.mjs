@@ -40,7 +40,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     const context = super.getData();
 
     context.factions = CONFIG.TRENCHCRUSADE.factionsChoices;
-
+    context.keywords = CONFIG.TRENCHCRUSADE.keywordsChoices;
     // Use a safe clone of the actor data for further operations.
     const actorData = this.document.toPlainObject();
 
@@ -63,6 +63,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     }
 
     this.actor.faction = actorData.faction;
+    this.actor.keywords = actorData.keywords;
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
