@@ -49,10 +49,7 @@
       "Item": "TrenchCrusade Item Sheet"
     },
     "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
-      }
+
     },
     "Effect": {
       "Source": "Source",
@@ -69,8 +66,7 @@
     },
     "Item": {
       "item": "Item",
-      "feature": "Feature",
-      "spell": "Spell"
+      "feature": "Feature"
     }
   }
 }

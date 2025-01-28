@@ -48,8 +48,7 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = TrenchCrusadeItem;
   CONFIG.Item.dataModels = {
     item: models.TrenchCrusadeItem,
-    feature: models.TrenchCrusadeFeature,
-    spell: models.TrenchCrusadeSpell
+    feature: models.TrenchCrusadeFeature
   }
 
   // Active Effects are never copied to the Actor,

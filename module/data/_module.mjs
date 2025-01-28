@@ -7,4 +7,3 @@ export {default as TrenchCrusadeNPC} from "./actor-npc.mjs";
 export {default as TrenchCrusadeItemBase} from "./base-item.mjs";
 export {default as TrenchCrusadeItem} from "./item-item.mjs";
 export {default as TrenchCrusadeFeature} from "./item-feature.mjs";
-export {default as TrenchCrusadeSpell} from "./item-spell.mjs";
