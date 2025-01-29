@@ -19,7 +19,7 @@
           </div>
         </div>
         <div>
-          <table>
+          <table class="flex-group-center">
             <thead>
               <tr>
                 <th>{{ localize (lookup @root.config.mySheetLabels "limi") }}</th>
@@ -60,24 +60,24 @@
             </tbody>
           </table>
         </div>
-      <div class="abilities_table">
+      <div class="abilities_table flex-group-center">
           <table>
             <thead>
               <tr>
-                {{#each system.abilities as |ability key|}}
-                  <th>
-                    <label for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>                
-                  </th>
-                {{/each}}
-              </tr>    
+                <th>{{localize (lookup @root.config.abilities 'mov')}}</th>
+                <th>{{localize (lookup @root.config.abilities 'ran')}}</th>
+                <th>{{localize (lookup @root.config.abilities 'mel')}}</th>
+                <th>{{localize (lookup @root.config.abilities 'arm')}}</th>
+                <th>{{localize (lookup @root.config.abilities 'bas')}}</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
-                {{#each system.abilities as |ability key|}}
-                  <td class="align-center ">
-                    <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>  
-                  </td>
-                {{/each}}
+                <td><input type="text" name="system.abilities.mov.value" value="{{system.abilities.mov.value}}" data-dtype="Number"/></td>
+                <td><input type="text" name="system.abilities.ran.value" value="{{numberFormat system.abilities.ran.value sign=true}}" data-dtype="Number"/></td>
+                <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
+                <td><input type="text" name="system.abilities.arm.value" value="{{system.abilities.arm.value}}" data-dtype="Number"/></td>
+                <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>
               </tr>          
             </tbody>
           </table>
