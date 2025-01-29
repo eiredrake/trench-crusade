@@ -57,6 +57,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     this.actor.faction = actorData.faction;
     this.actor.keywords = actorData.keywords;
     this.actor.flavorText = actorData.flavorText;
+    this.actor.limit = actorData.limit;
+    this.actor.baseSize = actorData.baseSize;
     
 
     // Enrich biography info for display

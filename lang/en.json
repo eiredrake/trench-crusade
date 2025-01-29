@@ -11,7 +11,8 @@
       "bles" : "Blessings",
       "desc" : "Description",
       "duca" : "Ducats",
-      "glor" : "Glory"
+      "glor" : "Glory",
+      "limi" : "Limit"
     },
     "Keywords": {
       "art" : "ARTIFICIAL",
@@ -44,9 +45,10 @@
     },
     "Ability": {
       "Mov": { "long": "Move", "abbr": "mov" },
+      "Ran": { "long": "Ranged", "abbr": "ran" },      
       "Mel": { "long": "Melee", "abbr": "mel" },
-      "Ran": { "long": "Ranged", "abbr": "ran" },
-      "Arm": { "long": "Armor", "abbr": "arm" }
+      "Arm": { "long": "Armor", "abbr": "arm" },
+      "Bas": { "long": "Base (mm)", "abbr": "bas" }
     },
     "SheetLabels": {
       "Actor": "TrenchCrusade Unit Sheet",

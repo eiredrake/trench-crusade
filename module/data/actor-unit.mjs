@@ -13,6 +13,8 @@ export default class TrenchCrusadeUnit extends TrenchCrusadeActorBase {
       }),
     });
 
+    schema.limit = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0});   
+    
     // Iterate over ability names and create a new SchemaField for each.
     schema.abilities = new fields.SchemaField(Object.keys(CONFIG.TRENCHCRUSADE.abilities).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({

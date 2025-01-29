@@ -6,9 +6,10 @@ export const TRENCHCRUSADE = {};
  */
 TRENCHCRUSADE.abilities = {
   mov: 'TRENCHCRUSADE.Ability.Mov.long',
-  mel: 'TRENCHCRUSADE.Ability.Mel.long',
   ran: 'TRENCHCRUSADE.Ability.Ran.long',
-  arm: 'TRENCHCRUSADE.Ability.Arm.long'
+  mel: 'TRENCHCRUSADE.Ability.Mel.long',
+  arm: 'TRENCHCRUSADE.Ability.Arm.long',
+  bas: 'TRENCHCRUSADE.Ability.Bas.long'
 };
 
 TRENCHCRUSADE.mySheetLabels = {
@@ -18,13 +19,15 @@ TRENCHCRUSADE.mySheetLabels = {
   bles : 'TRENCHCRUSADE.MySheetLabels.bles',
   duca : 'TRENCHCRUSADE.MySheetLabels.duca',
   glor : 'TRENCHCRUSADE.MySheetLabels.glor',
+  limi : 'TRENCHCRUSADE.MySheetLabels.limi',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
   mov: 'TRENCHCRUSADE.Ability.Mov.abbr',
   mel: 'TRENCHCRUSADE.Ability.Mel.abbr',
   ran: 'TRENCHCRUSADE.Ability.Ran.abbr',
-  arm: 'TRENCHCRUSADE.Ability.Arm.abbr'
+  arm: 'TRENCHCRUSADE.Ability.Arm.abbr',
+  bas: 'TRENCHCRUSADE.Ability.Bas.abbr'
 };
 
 TRENCHCRUSADE.factionsChoices = {
