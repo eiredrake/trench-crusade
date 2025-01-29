@@ -7,7 +7,8 @@
     },
     "MySheetLabels" : {
       "requ" : "Required Unit",
-      "blom" : "Blood Markers"
+      "blom" : "Blood Markers",
+      "desc" : "Description"
     },
     "Keywords": {
       "art" : "ARTIFICIAL",
@@ -54,8 +55,7 @@
   },
   "TYPES": {
     "Actor": {
-      "unit": "unit",
-      "npc": "NPC"
+      "unit": "unit"
     },
     "Item": {
       "item": "Item",

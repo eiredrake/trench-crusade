@@ -14,7 +14,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
         {
           navSelector: '.sheet-tabs',
           contentSelector: '.sheet-body',
-          initial: 'features',
+          initial: 'description',
         },
       ],
     });
@@ -54,19 +54,15 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
       this._prepareUnitData(context);
     }
 
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
-      this._prepareItems(context);
-    }
-
     this.actor.faction = actorData.faction;
     this.actor.keywords = actorData.keywords;
     this.actor.flavorText = actorData.flavorText;
+    
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
-    context.enrichedBiography = await TextEditor.enrichHTML(
-      this.actor.system.biography,
+    context.enrichedDescription = await TextEditor.enrichHTML(
+      this.actor.system.description,
       {
         // Whether to show secret blocks in the finished html
         secrets: this.document.isOwner,
