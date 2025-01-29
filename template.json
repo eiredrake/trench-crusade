@@ -3,6 +3,6 @@
     "types": ["unit"]
   },
   "Item": {
-    "types": ["item", "ability"]
+    "types": ["item", "feature"]
   }
 }
