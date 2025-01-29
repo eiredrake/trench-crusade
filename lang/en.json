@@ -8,7 +8,10 @@
     "MySheetLabels" : {
       "requ" : "Required Unit",
       "blom" : "Blood Markers",
-      "desc" : "Description"
+      "bles" : "Blessings",
+      "desc" : "Description",
+      "duca" : "Ducats",
+      "glor" : "Glory"
     },
     "Keywords": {
       "art" : "ARTIFICIAL",
@@ -59,7 +62,7 @@
     },
     "Item": {
       "item": "Item",
-      "feature": "Feature"
+      "feature": "Ability"
     }
   }
 }

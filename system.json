@@ -26,7 +26,10 @@
     "verified": "12.331"
   },
   "esmodules": ["module/trench-crusade.mjs"],
-  "styles": ["css/trench-crusade.css"],
+  "styles": [
+    "css/trench-crusade.css",
+    "css/actor-portrait.css"
+  ],
   "languages": [
     {
       "lang": "en",

@@ -15,6 +15,9 @@ TRENCHCRUSADE.mySheetLabels = {
   requ : 'TRENCHCRUSADE.MySheetLabels.requ',
   blom : 'TRENCHCRUSADE.MySheetLabels.blom',
   desc : 'TRENCHCRUSADE.MySheetLabels.desc',
+  bles : 'TRENCHCRUSADE.MySheetLabels.bles',
+  duca : 'TRENCHCRUSADE.MySheetLabels.duca',
+  glor : 'TRENCHCRUSADE.MySheetLabels.glor',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
