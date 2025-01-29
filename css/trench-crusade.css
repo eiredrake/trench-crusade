@@ -221,6 +221,13 @@
   height: 100px;
   margin-right: 10px;
 }
+
+.trench-crusade .sheet-header .item-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
 .trench-crusade .sheet-header .header-fields {
   flex: 1;
 }
