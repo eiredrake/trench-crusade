@@ -1,9 +1,11 @@
 // Import document classes.
 import { TrenchCrusadeActor } from './documents/actor.mjs';
 import { TrenchCrusadeItem } from './documents/item.mjs';
+import { TrenchCrusadeArmor } from './documents/armor.mjs';
 // Import sheet classes.
 import { TrenchCrusadeActorSheet } from './sheets/actor-sheet.mjs';
 import { TrenchCrusadeItemSheet } from './sheets/item-sheet.mjs';
+import { TrenchCrusadeArmorSheet } from './sheets/item-armor-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { TRENCHCRUSADE } from './helpers/config.mjs';
@@ -20,6 +22,7 @@ Hooks.once('init', function () {
   game.trenchcrusade = {
     TrenchCrusadeActor,
     TrenchCrusadeItem,
+    TrenchCrusadeArmor,
     rollItemMacro,
   };
 
@@ -47,7 +50,8 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = TrenchCrusadeItem;
   CONFIG.Item.dataModels = {
     item: models.TrenchCrusadeItem,
-    feature: models.TrenchCrusadeFeature
+    feature: models.TrenchCrusadeFeature,
+    armor: models.TrenchCrusadeArmor
   }
 
   // Register sheet application classes
@@ -60,6 +64,12 @@ Hooks.once('init', function () {
   Items.registerSheet('trench-crusade', TrenchCrusadeItemSheet, {
     makeDefault: true,
     label: 'TRENCHCRUSADE.SheetLabels.Item',
+  });
+
+  Items.registerSheet('trench-crusade', TrenchCrusadeArmorSheet, {
+    makeDefault: true,
+    label: 'TRENCHCRUSADE.SheetLabels.Armor',
+    types: ['armor']
   });
 
   // Preload Handlebars templates.

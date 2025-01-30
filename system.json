@@ -40,5 +40,23 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "background": "systems/trench-crusade/assets/anvil-impact.png"
+  "background": "systems/trench-crusade/assets/anvil-impact.png",
+  "documentTypes" :{
+    "Actor" : {
+      "unit": {
+        "htmlFields" : ["biography.value", "biography.gm"]
+      }
+    },
+    "Item" : {
+      "item" : {
+        "htmlFields" : ["description"]
+      },
+      "feature" : {
+        "htmlFields" : ["description"]
+      },
+      "armor" : {
+        "htmlFields" : ["description", "rules"]
+      }
+    }
+  }
 }

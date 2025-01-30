@@ -56,6 +56,10 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
       }
     );
 
+
+
+   
+
     // Add the item's data to context.data for easier access, as well as flags.
     context.system = itemData.system;
     context.flags = itemData.flags;

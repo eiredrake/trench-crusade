@@ -1,8 +1,0 @@
-{
-  "Actor": {
-    "types": ["unit"]
-  },
-  "Item": {
-    "types": ["item", "feature"]
-  }
-}

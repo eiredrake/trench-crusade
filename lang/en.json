@@ -12,7 +12,8 @@
       "desc" : "Description",
       "duca" : "Ducats",
       "glor" : "Glory",
-      "limi" : "Limit"
+      "limi" : "Limit",
+      "armo" : "Armour"
     },
     "Keywords": {
       "art" : "ARTIFICIAL",
@@ -52,7 +53,8 @@
     },
     "SheetLabels": {
       "Actor": "TrenchCrusade Unit Sheet",
-      "Item": "TrenchCrusade Item Sheet"
+      "Item": "TrenchCrusade Item Sheet",
+      "Armor": "TrenchCrusade Armor Sheet"
     },
     "Item": {
 
@@ -63,8 +65,9 @@
       "unit": "unit"
     },
     "Item": {
-      "item": "Item",
-      "feature": "Feature"
+      "item": "Equipment",
+      "feature": "Feature",
+      "armor" : "Armor"
     }
   }
 }

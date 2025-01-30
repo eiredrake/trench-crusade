@@ -20,6 +20,7 @@ TRENCHCRUSADE.mySheetLabels = {
   duca : 'TRENCHCRUSADE.MySheetLabels.duca',
   glor : 'TRENCHCRUSADE.MySheetLabels.glor',
   limi : 'TRENCHCRUSADE.MySheetLabels.limi',
+  armo : 'TRENCHCRUSADE.MySheetLabels.armo',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
