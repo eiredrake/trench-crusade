@@ -13,8 +13,14 @@
       "duca" : "Ducats",
       "glor" : "Glory",
       "limi" : "Limit",
-      "armo" : "Armour"
+      "armo" : "Armour",
+      "rule" : "Rules"
     },
+    "SheetLabels": {
+      "Actor": "TrenchCrusade Unit Sheet",
+      "Item": "TrenchCrusade Item Sheet",
+      "Armor": "TrenchCrusade Armor Sheet"
+    },    
     "Keywords": {
       "art" : "ARTIFICIAL",
       "ass" : "ASSAULT",
@@ -50,11 +56,6 @@
       "Mel": { "long": "Melee", "abbr": "mel" },
       "Arm": { "long": "Armor", "abbr": "arm" },
       "Bas": { "long": "Base (mm)", "abbr": "bas" }
-    },
-    "SheetLabels": {
-      "Actor": "TrenchCrusade Unit Sheet",
-      "Item": "TrenchCrusade Item Sheet",
-      "Armor": "TrenchCrusade Armor Sheet"
     },
     "Item": {
 

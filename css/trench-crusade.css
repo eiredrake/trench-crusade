@@ -364,3 +364,7 @@
 #description_display {
   border: 2px groove #eeede0;
 }
+
+.trench-crusade .sheet-table .tbody .tr .td .editor {
+  height: 150px;
+}

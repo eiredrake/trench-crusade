@@ -21,6 +21,7 @@ TRENCHCRUSADE.mySheetLabels = {
   glor : 'TRENCHCRUSADE.MySheetLabels.glor',
   limi : 'TRENCHCRUSADE.MySheetLabels.limi',
   armo : 'TRENCHCRUSADE.MySheetLabels.armo',
+  rule : 'TRENCHCRUSADE.MySheetLabels.rule',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
