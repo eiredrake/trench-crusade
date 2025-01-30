@@ -8,7 +8,7 @@ export default class TrenchCrusadeArmor extends TrenchCrusadeItemBase {
     const schema = super.defineSchema();
 
     schema.armor = new fields.NumberField({ ...requiredInteger, initial: 0, min: -10 });
-    schema.rules = new fields.HTMLField({ required: false, blank: true }); 
+
 
     // schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     // schema.weight = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });

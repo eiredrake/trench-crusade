@@ -56,7 +56,15 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
       }
     );
 
-
+    context.rules = {
+      field: this.document.system.schema.getField("rules"),
+      enriched: await TextEditor.enrichHTML(this.document.system.rules, {
+        rollData: this.document.getRollData(),
+        relativeTo: this.document,
+      }),
+      value: this.document.system.rules,
+      height: 300,
+    };
 
    
 

@@ -7,7 +7,8 @@ export default class TrenchCrusadeItemBase extends TrenchCrusadeDataModel {
     const schema = {};
 
     schema.description = new fields.StringField({ required: true, blank: true });
-
+    schema.rules = new fields.HTMLField({ required: false, blank: true }); 
+    
     return schema;
   }
 

@@ -1,8 +1,10 @@
+import { TrenchCrusadeItemSheet } from "./item-sheet.mjs";
+
 /**
- * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
+ * Extend the basic TrenchCrusadeItemSheet with some very simple modifications
+ * @extends {TrenchCrusadeItemSheet}
  */
-export class TrenchCrusadeArmorSheet extends ItemSheet {
+export class TrenchCrusadeArmorSheet extends TrenchCrusadeItemSheet {
     /** @override */
     static get defaultOptions() {
       return foundry.utils.mergeObject(super.defaultOptions, {
@@ -39,33 +41,7 @@ export class TrenchCrusadeArmorSheet extends ItemSheet {
   
       // Use a safe clone of the item data for further operations.
       const itemData = this.document.toPlainObject();
-  
-      // Enrich description info for display
-      // Enrichment turns text like `[[/r 1d20]]` into buttons
-      context.enrichedDescription = await TextEditor.enrichHTML(
-        this.item.system.description,
-        {
-          // Whether to show secret blocks in the finished html
-          secrets: this.document.isOwner,
-          // Necessary in v11, can be removed in v12
-          async: true,
-          // Data to fill in for inline rolls
-          rollData: this.item.getRollData(),
-          // Relative UUID resolution
-          relativeTo: this.item,
-        }
-      );  
-
-      context.rules = {
-        field: this.document.system.schema.getField("rules"),
-        enriched: await TextEditor.enrichHTML(this.document.system.rules, {
-          rollData: this.document.getRollData(),
-          relativeTo: this.document,
-        }),
-        value: this.document.system.rules,
-        height: 300,
-      };
-  
+   
       // Add the item's data to context.data for easier access, as well as flags.
       context.system = itemData.system;
       context.flags = itemData.flags;
