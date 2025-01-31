@@ -1,4 +1,4 @@
-const { StringField} = foundry.data.fields;
+const { StringField } = foundry.data.fields;
 
 /**
  * Constructs a string field for use inside of a SetField

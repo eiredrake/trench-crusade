@@ -1,47 +1,39 @@
-{{! This template is a fallback for when items don't have more specific templates. }}
-{{! Generally, you'll want to make more specific templates when possible. }}
-<form class='{{cssClass}}' autocomplete='off'>
-  <header class='sheet-header'>
-    <img
-      class='item-img'
-      src='{{item.img}}'
-      data-edit='img'
-      title='{{item.name}}'
-    />
-    <div class='header-fields'>
-      <h1 class='charname'><input
-          name='name'
-          type='text'
-          value='{{item.name}}'
-          placeholder='Name'
-        /></h1>
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </div>
   </header>
+<div>
+    <label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "armo") }}</label>
+    <input type='text' name='system.armor' value='{{numberFormat system.armor sign=true}}' data-dtype='Number' />
+</div>
 
-  {{! Sheet Tab Navigation }}
-  <nav class='sheet-tabs tabs' data-group='primary'>
-    <a class='item' data-tab='description'>Description</a>
-    <a class='item' data-tab='attributes'>Attributes</a>
-  </nav>
+<table class="sheet-table flex-group-center">
+  <thead>
+    <tr>
+      <th>{{ localize (lookup @root.config.mySheetLabels "desc") }}</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+    <tr class="tr">
+      <td class="td">{{ editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable }}</td>
+    </tr>
+  </tbody>
+</table>
 
-  {{! Sheet Body }}
-  <section class='sheet-body'>
+<table class="sheet-table">
+  <thead>
+    <tr>
+      <th>{{ localize (lookup @root.config.mySheetLabels "rule") }}</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+    <tr class="tr">
+      <td class="td">      {{editor system.rules target="system.rules" engine="prosemirror" button=true editable=editable}}</td>
+    </tr>
+  </tbody>
+</table>
 
-    {{! Description Tab }}
-    <div class='tab' data-group='primary' data-tab='description'>
-      {{! Editors must receive enriched text data from getData to properly handle rolls }}
-      {{editor
-        enrichedDescription
-        target='system.description'
-        engine='prosemirror'
-        button=true
-        editable=editable
-      }}
-    </div>
-
-    {{! Attributes Tab }}
-    <div class='tab attributes' data-group='primary' data-tab='attributes'>
-      {{! As you add new fields, add them in here! }}
-    </div>
-  </section>
 </form>

@@ -8,7 +8,7 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['trench-crusade', 'sheet', 'item'],
       width: 520,
-      height: 480,
+      height: 500,
       tabs: [
         {
           navSelector: '.sheet-tabs',
@@ -40,6 +40,7 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
     // Use a safe clone of the item data for further operations.
     const itemData = this.document.toPlainObject();
 
+    context.keywords = Object.entries(CONFIG.TRENCHCRUSADE.keywordsChoices).map(([value, label]) => ({value, label}));
     // Enrich description info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
     context.enrichedDescription = await TextEditor.enrichHTML(
@@ -66,7 +67,7 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
       height: 300,
     };
 
-   
+    context.cost = itemData.cost;
 
     // Add the item's data to context.data for easier access, as well as flags.
     context.system = itemData.system;
