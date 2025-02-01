@@ -6,24 +6,34 @@
     </div>
   </header>
 
-  <div>
-    Keywords
-    {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}     
-  </div>
+  <table class="sheet-table">
+    <thead>
+      <tr>
+        <th>
+          {{ localize (lookup @root.config.mySheetLabels "keyw") }}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+      <tr class="tr">
+        <td class="td">
+          {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}           
+        </td>        
+      </tr>
+    </tbody>
+  </table>
 
-  {{!-- Sheet Tab Navigation --}}
-  <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="description">Description</a>
-  </nav>
-
-  {{!-- Sheet Body --}}
-  <section class="sheet-body">
-
-    {{!-- Description Tab --}}
-    <div class="tab" data-group="primary" data-tab="description">
-      {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
-      {{editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable}}
-    </div>
-  </section>
+  <table class="sheet-table">
+    <thead>
+      <tr>
+        <th>{{ localize (lookup @root.config.mySheetLabels "desc") }}</th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+      <tr class="tr">
+        <td class="td">{{ editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable }}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </form>

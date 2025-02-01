@@ -14,7 +14,8 @@
       "glor" : "Glory",
       "limi" : "Limit",
       "armo" : "Armour",
-      "rule" : "Rules"
+      "rule" : "Rules",
+      "keyw" : "Keywords"
     },
     "SheetLabels": {
       "Actor": "TrenchCrusade Unit Sheet",
@@ -67,7 +68,7 @@
     },
     "Item": {
       "item": "Equipment",
-      "feature": "Feature",
+      "feature": "Ability",
       "armor" : "Armor"
     }
   }
