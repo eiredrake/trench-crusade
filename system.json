@@ -56,7 +56,10 @@
       },
       "armor" : {
         "htmlFields" : ["description", "rules"]
-      }
+      },
+      "weapon" : {
+        "htmlFields" : ["description", "rules"]
+      }      
     }
   }
 }

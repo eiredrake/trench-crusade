@@ -6,8 +6,19 @@
     </div>
   </header>
 
+    <label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "weat") }}</label>
+    <select name="system.weaponType">
+      {{ selectOptions weaponTypes selected=system.weaponType localize=true }}
+    </select>
+
   <div>
     <label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "keyw") }}</label>
+    {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}     
+  </div>
+
+
+  {{!-- <div>
+    Keywords
     {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}     
   </div>
 
@@ -52,7 +63,7 @@
       <td class="td">      {{editor system.rules target="system.rules" engine="prosemirror" button=true editable=editable}}</td>
     </tr>
   </tbody>
-</table>
+</table> --}}
 
 
 

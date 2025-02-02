@@ -12,6 +12,14 @@ TRENCHCRUSADE.abilities = {
   bas: 'TRENCHCRUSADE.Ability.Bas.long'
 };
 
+TRENCHCRUSADE.weaponTypeChoices = {
+  r1h: 'TRENCHCRUSADE.WeaponTypes.r1h',
+  r2h: 'TRENCHCRUSADE.WeaponTypes.r2h',
+  m1h: 'TRENCHCRUSADE.WeaponTypes.m1h',
+  m2h: 'TRENCHCRUSADE.WeaponTypes.m2h',
+  gre: 'TRENCHCRUSADE.WeaponTypes.gre',
+};
+
 TRENCHCRUSADE.mySheetLabels = {
   requ : 'TRENCHCRUSADE.MySheetLabels.requ',
   blom : 'TRENCHCRUSADE.MySheetLabels.blom',
@@ -23,6 +31,9 @@ TRENCHCRUSADE.mySheetLabels = {
   armo : 'TRENCHCRUSADE.MySheetLabels.armo',
   rule : 'TRENCHCRUSADE.MySheetLabels.rule',
   keyw : 'TRENCHCRUSADE.MySheetLabels.keyw',
+  weat : 'TRENCHCRUSADE.MySheetLabels.weat',
+  rang : 'TRENCHCRUSADE.MySheetLabels.rang',
+  mele : 'TRENCHCRUSADE.MySheetLabels.mele',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {

@@ -15,12 +15,23 @@
       "limi" : "Limit",
       "armo" : "Armour",
       "rule" : "Rules",
-      "keyw" : "Keywords"
+      "keyw" : "Keywords",
+      "weat" : "Weapons Types",
+      "rang" : "Ranged Weapons",
+      "mele" : "Melee Weapons"
+    },
+    "WeaponTypes" : {
+      "r1h" : "1-Handed Ranged",
+      "r2h" : "2-Handed Ranged",
+      "m1h" : "1-Handed Melee",
+      "m2h" : "2-Handed Melee",
+      "gre" : "Grenade"
     },
     "SheetLabels": {
       "Actor": "TrenchCrusade Unit Sheet",
       "Item": "TrenchCrusade Item Sheet",
-      "Armor": "TrenchCrusade Armor Sheet"
+      "Armor": "TrenchCrusade Armor Sheet",
+      "Weapon" : "TrenchCrusade Weapon Sheet"
     },    
     "Keywords": {
       "art" : "ARTIFICIAL",
@@ -68,8 +79,9 @@
     },
     "Item": {
       "item": "Equipment",
-      "feature": "Ability",
-      "armor" : "Armor"
+      "feature": "Feature",
+      "armor" : "Armor",
+      "weapon" : "Weapon"
     }
   }
 }
