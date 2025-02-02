@@ -17,8 +17,11 @@
       "rule" : "Rules",
       "keyw" : "Keywords",
       "weat" : "Weapons Types",
-      "rang" : "Ranged Weapons",
-      "mele" : "Melee Weapons"
+      "rang" : "Ranged",
+      "mele" : "Melee",
+      "melW" : "Melee Weapons",
+      "ranW" : "Ranged Weapons",
+      "modi" : "Modifiers"
     },
     "WeaponTypes" : {
       "r1h" : "1-Handed Ranged",

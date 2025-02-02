@@ -10,7 +10,7 @@ export class TrenchCrusadeWeaponSheet extends TrenchCrusadeItemSheet {
       return foundry.utils.mergeObject(super.defaultOptions, {
         classes: ['trench-crusade', 'sheet', 'item', 'weapon'],
         width: 520,
-        height: 580,
+        height: 650,
         tabs: [
           {
             navSelector: '.sheet-tabs',
@@ -53,6 +53,8 @@ export class TrenchCrusadeWeaponSheet extends TrenchCrusadeItemSheet {
 
 
       this.item.weaponType = itemData.weaponType;
+      this.item.range = itemData.range;
+      this.item.modifiers = itemData.modifiers;
 
   
       return context;

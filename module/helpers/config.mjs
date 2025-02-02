@@ -32,8 +32,11 @@ TRENCHCRUSADE.mySheetLabels = {
   rule : 'TRENCHCRUSADE.MySheetLabels.rule',
   keyw : 'TRENCHCRUSADE.MySheetLabels.keyw',
   weat : 'TRENCHCRUSADE.MySheetLabels.weat',
+  ranW : 'TRENCHCRUSADE.MySheetLabels.ranW',
+  melW : 'TRENCHCRUSADE.MySheetLabels.melW',
   rang : 'TRENCHCRUSADE.MySheetLabels.rang',
-  mele : 'TRENCHCRUSADE.MySheetLabels.mele',
+  mele : 'TRENCHCRUSADE.MySheetLabels.mele',  
+  modi : 'TRENCHCRUSADE.MySheetLabels.modi'
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
