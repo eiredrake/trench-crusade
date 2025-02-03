@@ -111,6 +111,12 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
       else if (i.type === 'feature') {
         features.push(i);
       }
+      else if (i.type == 'weapon'){
+        gear.push(i);
+      }
+      else if (i.type == 'armor') {
+        gear.push(i);
+      }
     }
 
     // Assign and return

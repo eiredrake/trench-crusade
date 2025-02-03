@@ -367,6 +367,7 @@
 
 .trench-crusade .sheet-table .tbody .tr .td .editor {
   height: 150px;
+  resize: vertical;
 }
 
 /* .trench-crusade .sheet-table thead tr th {
