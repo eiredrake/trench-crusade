@@ -15,6 +15,7 @@ export default class TrenchCrusadeItemBase extends TrenchCrusadeDataModel {
       ducats: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0}),
       glory: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0}),
     });
+    schema.short_description = new fields.StringField({ required: true, blank: true });
 
     return schema;
   }

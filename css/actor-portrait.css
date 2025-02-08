@@ -1,5 +1,9 @@
 .sheet .sheet-header .profile-img {
-    height: 250px;
-    width: 150px;
-
+    height: 300px;
+    width: 225px;
 }
+
+.trench-crusade .items-list .items-header .item-short-desc {
+    padding-left: 5px;
+    text-align: left;
+  }

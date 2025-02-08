@@ -8,7 +8,7 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['trench-crusade', 'sheet', 'item'],
       width: 520,
-      height: 500,
+      height: 750,
       tabs: [
         {
           navSelector: '.sheet-tabs',
@@ -68,6 +68,7 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
     };
 
     context.cost = itemData.cost;
+    context.short_description = itemData.short_description;
 
     // Add the item's data to context.data for easier access, as well as flags.
     context.system = itemData.system;

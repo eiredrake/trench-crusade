@@ -45,6 +45,7 @@ export class TrenchCrusadeArmorSheet extends TrenchCrusadeItemSheet {
       // Add the item's data to context.data for easier access, as well as flags.
       context.system = itemData.system;
       context.flags = itemData.flags;
+      context.short_description = itemData.short_description;
   
       // Adding a pointer to CONFIG.TRENCHCRUSADE
       context.config = CONFIG.TRENCHCRUSADE;

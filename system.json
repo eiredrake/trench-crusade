@@ -28,7 +28,8 @@
   "esmodules": ["module/trench-crusade.mjs"],
   "styles": [
     "css/trench-crusade.css",
-    "css/actor-portrait.css"
+    "css/actor-portrait.css",
+    "css/item-table.css"
   ],
   "languages": [
     {

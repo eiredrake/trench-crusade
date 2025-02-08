@@ -8,8 +8,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['trench-crusade', 'sheet', 'actor'],
-      width: 600,
-      height: 700,
+      width: 750,
+      height: 660,
       tabs: [
         {
           navSelector: '.sheet-tabs',

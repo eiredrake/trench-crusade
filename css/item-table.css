@@ -1,0 +1,64 @@
+ol.items-list li.item.flexrow.items-header {
+    background-color: maroon;
+}
+
+ol.items-list li.item.flexrow div.item-header {
+    vertical-align: middle;
+}
+
+ol.items-list li.item.flexrow {
+    vertical-align: middle;
+    align-items: baseline;
+}
+
+ol.items-list li.item.flexrow div.item-name a.rollable img.item-small-icon {
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+}
+
+.trench-crusade .items-list .item-header {
+    flex-basis: 0;
+    flex-shrink: 2; 
+}
+
+.trench-crusade .items-list .item-name {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.trench-crusade .items-list .item-short-description {
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+.trench-crusade .items-list .item-controls {
+    flex-basis: 0;
+    flex-shrink: 2;
+}
+
+ol.items-list li.item.flexrow.items-header div.item-header-left {
+    color:whitesmoke;
+    font-family:'Roboto' sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px var(--color-shadow-dark);
+    display: table-cell;
+    text-align: left;
+    margin-left: 5px;
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+ol.items-list li.item.flexrow.items-header div.item-header-right {
+    color:whitesmoke;
+    font-family:'Roboto' sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px var(--color-shadow-dark);
+    display: table-cell;
+    text-align: right;
+    margin-right: 5px; 
+    flex-basis: 0;
+    flex-grow: 1;
+}

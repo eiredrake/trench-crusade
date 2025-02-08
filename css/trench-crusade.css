@@ -279,7 +279,7 @@
   display: flex;
 }
 .trench-crusade .items-list {
-  list-style: none;
+  list-style: none;       
   margin: 0;
   padding: 0;
   overflow-y: auto;
@@ -312,11 +312,11 @@
 }
 .trench-crusade .items-list .item-controls a {
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   margin: 0 6px;
 }
 .trench-crusade .items-list .item {
-  align-items: center;
+  align-items: left;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
 }
@@ -334,7 +334,7 @@
   margin-right: 5px;
 }
 .trench-crusade .items-list .item-prop {
-  text-align: center;
+  text-align: left;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
@@ -367,7 +367,7 @@
 
 .trench-crusade .sheet-table .tbody .tr .td .editor {
   height: 150px;
-  resize: vertical;
+  resize: vertical
 }
 
 /* .trench-crusade .sheet-table thead tr th {

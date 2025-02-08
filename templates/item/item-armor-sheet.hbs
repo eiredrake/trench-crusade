@@ -31,6 +31,23 @@
 <table class="sheet-table">
   <thead>
     <tr>
+      <th>
+        {{ localize (lookup @root.config.mySheetLabels "sdes") }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input name="system.short_description" type="text" value="{{ system.short_description }}" placeholder=""/>    
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="sheet-table">
+  <thead>
+    <tr>
       <th>{{ localize (lookup @root.config.mySheetLabels "desc") }}</th>
     </tr>
   </thead>
