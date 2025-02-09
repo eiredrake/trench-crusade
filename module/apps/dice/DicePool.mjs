@@ -22,6 +22,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 			diceCountDelta: this.#diceCountDelta,
 			diceBonusDelta: this.#diceBonusDelta,
 			roll: this.#roll,
+			reset: this.#reset,
 		},
 	};
 
@@ -41,7 +42,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	constructor({
 		diceCount = 0,
 		diceBonus = 0,
-		formula = '2d6',
+		formula = '2d6kh2',
 		flavor = ``,
 		...opts
 	} = {}) {
@@ -148,21 +149,39 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 		return result;
 	}
 
+	static async #reset(_event)
+	{
+		this._diceBonus = 0;
+		this._diceCount = 0;
+
+		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+
+		this.render({ parts: [`numberOfDice`] });
+	}
+
 	static async #roll(_event, element) {
 		const rollType = element.getAttribute('data-rollType');
 		console.info(`type: ${rollType}`);
-	
+
 		let flavor = this._flavor;
-
 		const roll = new Roll(this._formula);
-		await roll.evaluate();
-		await roll.toMessage({
-			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-			flavor,
-		});
+
+		let rollTable = await fromUuid(rollType);
+		if(rollTable)
+		{
+			console.info(`rollTable: ${rollTable.name}`);
+			await rollTable.draw(
+				{
+					roll: roll,
+				});
+		}
+		else{	
+			await roll.toMessage({
+				speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+				flavor,
+			});
+		}
 	};
-
-
 
 	// #endregion
 };
