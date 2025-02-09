@@ -58,6 +58,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     this.actor.flavorText = actorData.flavorText;
     this.actor.limit = actorData.limit;
     this.actor.baseSize = actorData.baseSize;
+
+    //this.actor.blood.max = 6;
     
 
     // Enrich biography info for display
@@ -87,6 +89,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
   _prepareUnitData(context) {
     // This is where you can enrich Unit-specific editor fields
     // or setup anything else that's specific to this type
+    
   }
 
   /**

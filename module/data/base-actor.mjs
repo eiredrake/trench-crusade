@@ -13,10 +13,9 @@ export default class TrenchCrusadeActorBase extends TrenchCrusadeDataModel {
     schema.faction = new fields.StringField({ required: true, blank: true }); 
     schema.keywords = new fields.SetField(setOptions());
 
-
-
     schema.blood = new fields.SchemaField({
       value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 6 }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 6, max: 6 }),
     });
 
     schema.blessings = new fields.SchemaField({
