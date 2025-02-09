@@ -1,4 +1,3 @@
-
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -198,30 +197,52 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRoll(event) {
+  _onRoll(event) 
+  {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    // Handle item rolls.
-    if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
-      }
-    }
+    console.info("onRoll start");
 
-    // Handle rolls that supply the formula directly.
-    if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
+    let roll = new Roll("2d6", this.actor.getRollData());
+    roll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this.actor}),
+        flavor: "doing the thing",
         rollMode: game.settings.get('core', 'rollMode'),
-      });
-      return roll;
-    }
+      }
+    );
+
+
+    
+
+    console.info("onRoll end");
+
+    return roll;
+
+    
+
+
+    // Handle item rolls.
+    // if (dataset.rollType) 
+    // {
+    //   if (dataset.rollType == 'item') {
+    //     const itemId = element.closest('.item').dataset.itemId;
+    //     const item = this.actor.items.get(itemId);
+    //     if (item) return item.roll();
+    //   }
+    // }
+
+    // // Handle rolls that supply the formula directly.
+    // if (dataset.roll) {
+    //   let label = dataset.label ? `[ability] ${dataset.label}` : '';
+    //   let roll = new Roll(dataset.roll, this.actor.getRollData());
+    //   roll.toMessage({
+    //     speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //     flavor: label,
+    //     rollMode: game.settings.get('core', 'rollMode'),
+    //   });
+    //   return roll;
+    // }
   }
 }

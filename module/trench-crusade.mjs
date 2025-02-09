@@ -14,6 +14,8 @@ import { TRENCHCRUSADE } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
+import {DicePool} from "./apps/dice/DicePool.mjs";
+
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
@@ -31,6 +33,8 @@ Hooks.once('init', function () {
 
   // Add custom constants for configuration.
   CONFIG.TRENCHCRUSADE = TRENCHCRUSADE;
+
+  CONFIG.ui.roller = DicePool;
 
   /**
    * Set an initiative formula for the system
@@ -102,6 +106,8 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+
+  ui.roller.render( {force: true} );
 });
 
 /* -------------------------------------------- */

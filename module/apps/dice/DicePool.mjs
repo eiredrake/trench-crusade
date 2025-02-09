@@ -8,7 +8,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 			`ripcrypt--DicePool`,
 		],
 		window: {
-			title: `Dice Pool`,
+			title: `Trench Crusade Roller`,
 			frame: true,
 			positioned: true,
 			resizable: false,
@@ -20,16 +20,17 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 		},
 		actions: {
 			diceCountDelta: this.#diceCountDelta,
+			diceBonusDelta: this.#diceBonusDelta,
 			roll: this.#roll,
 		},
 	};
 
 	static PARTS = {
 		numberOfDice: {
-			template: filePath(`templates/Apps/DicePool/numberOfDice.hbs`),
+			template: 'systems/trench-crusade/module/apps/dice/numberOfDice.hbs',
 		},
 		buttons: {
-			template: filePath(`templates/Apps/DicePool/buttons.hbs`),
+			template: 'systems/trench-crusade/module/apps/dice/buttons.hbs',
 		},
 	};
 	// #endregion
@@ -38,7 +39,9 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	_diceCount;
 
 	constructor({
-		diceCount = 1,
+		diceCount = 0,
+		diceBonus = 0,
+		formula = '2d6',
 		flavor = ``,
 		...opts
 	} = {}) {
@@ -46,6 +49,8 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 
 		this._flavor = flavor;
 		this._diceCount = diceCount;
+		this._diceBonus = diceBonus;
+		this._formula = formula;
 	};
 
 	get title() {
@@ -74,12 +79,42 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 
 	async _prepareNumberOfDice(ctx) {
 		ctx.numberOfDice = this._diceCount;
+		ctx.formula = this._formula;
+		ctx.diceBonus = this._diceBonus;
 		ctx.decrementDisabled = this._diceCount <= 0;
 	};
 	// #endregion
 
+	static async #diceBonusDelta(_event, element){
+
+		//console.info("diceBonusDelta called");
+		//console.info(`element: ${element.dataset.dicebonus}`);
+
+		const delta = parseInt(element.dataset.dicebonus);
+		if (Number.isNaN(delta)) {
+			ui.notifications.error(
+				localizer(`RipCrypt.notifs.error.invalid-delta`, { name: `@RipCrypt.Apps.numberOfDice` }),
+			);
+			return;
+		};
+
+		let newBonus = this._diceBonus + delta;
+
+		this._diceBonus = newBonus;
+
+		//console.info(`diceBonus: ${this._diceBonus}`);
+
+		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+
+		this.render({ parts: [`numberOfDice`] });
+	}
+
 	// #region Actions
 	static async #diceCountDelta(_event, element) {
+
+//console.info("diceCountDelta called");
+//console.info(`element: ${element.dataset.delta}`);
+
 		const delta = parseInt(element.dataset.delta);
 		if (Number.isNaN(delta)) {
 			ui.notifications.error(
@@ -90,26 +125,44 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 
 		let newCount = this._diceCount + delta;
 
-		if (newCount < 0) {
-			ui.notifications.warn(`Cannot go below dice count 0`,);
-		};
+		this._diceCount = newCount;
 
-		this._diceCount = Math.max(newCount, 0);
+//console.info(`diceCount: ${this._diceCount}`);
+
+		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+
 		this.render({ parts: [`numberOfDice`] });
 	};
 
-	static async #roll() {
-		const formula = `${this._diceCount}d8`;
+	static compileFormula(diceCount, bonus)
+	{
+		let bonusOperator = "";
+		if(bonus > 0)
+			bonusOperator = `+${bonus}`;
+		else if(bonus < 0)
+			bonusOperator = `${bonus}`;
 
+		let result = `${2+Math.abs(diceCount)}d6k${diceCount < 0 ? 'l' : 'h'}2`;
+		result = result + bonusOperator;
+
+		return result;
+	}
+
+	static async #roll(_event, element) {
+		const rollType = element.getAttribute('data-rollType');
+		console.info(`type: ${rollType}`);
+	
 		let flavor = this._flavor;
 
-		const roll = new Roll(formula);
+		const roll = new Roll(this._formula);
 		await roll.evaluate();
 		await roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			flavor,
 		});
-		this.close();
 	};
+
+
+
 	// #endregion
 };
