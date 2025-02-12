@@ -1,105 +1,88 @@
-<form class="{{cssClass}} sheet-content" autocomplete="off">
-  <header class="sheet-header">
-    <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
-  </header>
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="sheet-body">
+    <div class="sheet-contents">
+      <header class="sheet-header">
+        <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+      </header>
+      <div class="sheet-contents-main-body">
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "keyw") }}
+          </div>
+        </div>
+        <div class="column-data">
+          {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}       
+        </div>        
+        <div class="flex-row header-coloring">
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "duca") }}
+          </div>
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "glor") }}
+          </div>
+        </div>
+        <div class="flex-row align-left">
+          <div class="column-data">
+            <input type='text' name='system.cost.ducats' value='{{ system.cost.ducats }}' data-dtype='Number' />
+          </div>
+          <div class="column-data">
+            <input type='text' name='system.cost.glory' value='{{ system.cost.glory }}' data-dtype='Number' />
+          </div>
+        </div>
 
-<div>
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "sdes") }}
+          </div>
+        </div>
+        <div class="column-data">
+          <input name="system.short_description" type="text" value="{{ system.short_description }}" placeholder=""/>    
+        </div>
+
+
+
+        <div class="flex-row header-coloring">
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "rang") }}
+          </div>
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "mele") }}
+          </div>
+        </div>
+
+        <div class="flex-row align-left">
+          <div class="column-data">
+            <input type='text' name='system.range' value='{{numberFormat system.range}}' data-dtype='Number' />
+          </div>
+          <div class="column-data">
+            <input type='text' name='system.modifiers' value='{{system.modifiers}}' data-dtype='String' />
+          </div>
+        </div>
+
+
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "desc") }}
+          </div>
+        </div>
+        
+        <div class="column-data-fill">
+          {{ editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable }}
+        </div>      
+
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "rule") }}
+          </div>
+        </div>
+
+        <div class="column-data-fill">
+           {{editor system.rules target="system.rules" engine="prosemirror" button=true editable=editable}}
+        </div>            
+
+      </div>
     </div>
-      
-  <div>
-  <table class="sheet-table flex-group-center">
-    <thead>
-      <tr class="tr" >
-        <th class="th"><label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "weat") }}</label></th>
-        <th><label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "duca") }}</label></th>
-        <th><label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "glor") }}</label></th>
-      </tr>
-    </thead>
-    <tbody class="tbody">
-      <tr class="tr">
-        <td class="td"><select name="system.weaponType">{{ selectOptions weaponTypes selected=system.weaponType localize=true }} </select></td>
-        <td class="td"><input type='text' name='system.cost.ducats' value='{{system.cost.ducats}}' data-dtype='Number' /></td>
-        <td class="td"><input type='text' name='system.cost.glory' value='{{system.cost.glory}}' data-dtype='Number' /></td>
-      </tr>
-    </tbody>
-  </table>   
-  <table class="sheet-table flex-group-center">
-    <thead>
-      <tr class="tr">
-        <th><label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "keyw") }}</label></th>
-      </tr>
-    </thead>
-    <tbody class="tbody">
-      <tr class="tr">
-        <td class="td"><div>{{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}</div></td>
-      </tr>
-    </tbody>
-  </table>  
-  <table class="sheet-table flex-group-center">
-    <thead>
-      <tr>
-        <th><label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "rang") }}</label></th>
-        <th><label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "modi") }}</label></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type='text' name='system.range' value='{{numberFormat system.range}}' data-dtype='Number' /></td>
-        <td><input type='text' name='system.modifiers' value='{{system.modifiers}}' data-dtype='String' /></td>
-      </tr>
-    </tbody>
-  </table>
-
-<table class="sheet-table">
-  <thead>
-    <tr>
-      <th>
-        {{ localize (lookup @root.config.mySheetLabels "sdes") }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <input name="system.short_description" type="text" value="{{ system.short_description }}" placeholder=""/>    
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-  <table class="sheet-table">
-    <thead>
-      <tr>
-        <th>{{ localize (lookup @root.config.mySheetLabels "desc") }}</th>
-      </tr>
-    </thead>
-    <tbody class="tbody">
-      <tr class="tr">
-        <td class="td">{{ editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable }}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="sheet-table">
-    <thead>
-      <tr>
-        <th>{{ localize (lookup @root.config.mySheetLabels "rule") }}</th>
-      </tr>
-    </thead>
-    <tbody class="tbody">
-      <tr class="tr">
-        <td class="td">      {{editor system.rules target="system.rules" engine="prosemirror" button=true editable=editable}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-   
-
-
-
-
-
-
 </form>
