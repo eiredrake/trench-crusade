@@ -110,6 +110,11 @@ Hooks.once('ready', function () {
   ui.roller.render( {force: true} );
 });
 
+Hooks.on("getSceneControlButtons", (buttons) => {
+  //const tokenButtons = buttons.find(b => b.name === 'token')
+  //tokenButtons.tools.push() // put the tool data in here
+});
+
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
 /* -------------------------------------------- */

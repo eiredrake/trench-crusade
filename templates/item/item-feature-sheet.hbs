@@ -1,54 +1,57 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <header class="sheet-header">
-    <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
-    </div>
-  </header>
+  <div class="sheet-body">
+    <div class="sheet-contents">
+      <header class="sheet-header">
+        <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+      </header>
+      <div class="sheet-contents-main-body">
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "keyw") }}
+          </div>
+        </div>
+        <div class="column-data">
+          {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}       
+        </div>        
+        <div class="flex-row header-coloring">
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "duca") }}
+          </div>
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "glor") }}
+          </div>
+        </div>
+        <div class="flex-row align-left">
+          <div class="column-data">
+            <input type='text' name='system.cost.ducats' value='{{ system.cost.ducats }}' data-dtype='Number' />
+          </div>
+          <div class="column-data">
+            <input type='text' name='system.cost.glory' value='{{ system.cost.glory }}' data-dtype='Number' />
+          </div>
+        </div>
 
-  <table class="sheet-table">
-    <thead>
-      <tr>
-        <th>
-          {{ localize (lookup @root.config.mySheetLabels "keyw") }}
-        </th>
-      </tr>
-    </thead>
-    <tbody class="tbody">
-      <tr class="tr">
-        <td class="td">
-          {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}           
-        </td>        
-      </tr>
-    </tbody>
-  </table>
-  <table class="sheet-table">
-    <thead>
-      <tr>
-        <th>
-          {{ localize (lookup @root.config.mySheetLabels "sdes") }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "sdes") }}
+          </div>
+        </div>
+        <div class="column-data">
           <input name="system.short_description" type="text" value="{{ system.short_description }}" placeholder=""/>    
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <table class="sheet-table">
-    <thead>
-      <tr>
-        <th>{{ localize (lookup @root.config.mySheetLabels "desc") }}</th>
-      </tr>
-    </thead>
-    <tbody class="tbody">
-      <tr class="tr">
-        <td class="td">{{ editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable }}</td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
 
+        <div class="flex-row header-coloring">
+          <div class="column-header align-left">
+            {{ localize (lookup @root.config.mySheetLabels "desc") }}
+          </div>
+        </div>
+
+        <div class="column-data-fill">
+          {{ editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable }}
+        </div>        
+
+      </div>
+    </div>
 </form>

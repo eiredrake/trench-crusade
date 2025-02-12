@@ -6,8 +6,8 @@
     </div>
   </header>
 
-    <div>
-    Keywords
+  <div>
+    <label class='resource-label'>{{ localize (lookup @root.config.mySheetLabels "keyw") }}</label>
     {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}     
   </div>
 

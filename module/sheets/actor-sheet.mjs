@@ -58,8 +58,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     this.actor.flavorText = actorData.flavorText;
     this.actor.limit = actorData.limit;
     this.actor.baseSize = actorData.baseSize;
-
-    //this.actor.blood.max = 6;
+    this.actor.blood = actorData.blood;
+    this.actor.blessings = actorData.blessings;
     
 
     // Enrich biography info for display
