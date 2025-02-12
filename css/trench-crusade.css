@@ -436,6 +436,10 @@
   text-indent: initial;
 }
 
+th {
+  background-color: darkred;
+}
+
 .trench-crusade form.editable div.sheet-body div.sheet-contents div.sheet-contents-main-body div.flex-row {
   display: flex;
   align-items: center;
