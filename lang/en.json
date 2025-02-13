@@ -3,7 +3,8 @@
     "Factions" :{
       "her": "Heretic Legion",
       "tre": "Trench Pilgrims",
-      "iro" : "The Iron Sultanate"
+      "iro" : "The Iron Sultanate",
+      "pna" : "The Principality of New Antioch"
     },
     "MySheetLabels" : {
       "requ" : "Required Unit",
