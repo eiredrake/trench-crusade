@@ -24,7 +24,8 @@
       "melW" : "Melee Weapons",
       "ranW" : "Ranged Weapons",
       "modi" : "Modifiers",
-      "use" : "Use"
+      "use"  : "Use",
+      "fact" : "Faction"
     },
     "WeaponTypes" : {
       "r1h" : "1-Handed Ranged",

@@ -66,6 +66,8 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	async _preparePartContext(partId, ctx, _opts) {
 		ctx = {};
 
+        console.info(`partId: ${partId}`);
+
 		switch (partId) {
 			case `numberOfDice`: {
 				this._prepareNumberOfDice(ctx);

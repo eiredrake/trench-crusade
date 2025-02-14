@@ -15,6 +15,7 @@ import { TRENCHCRUSADE } from './helpers/config.mjs';
 import * as models from './data/_module.mjs';
 
 import {DicePool} from "./apps/dice/DicePool.mjs";
+import {Armoury} from "./apps/armoury/Armoury.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -35,6 +36,7 @@ Hooks.once('init', function () {
   CONFIG.TRENCHCRUSADE = TRENCHCRUSADE;
 
   CONFIG.ui.roller = DicePool;
+  CONFIG.armoury = Armoury;
 
   /**
    * Set an initiative formula for the system
