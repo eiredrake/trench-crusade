@@ -29,7 +29,8 @@
   "styles": [
     "css/trench-crusade.css",
     "css/actor-portrait.css",
-    "css/item-table.css"
+    "css/item-table.css",
+    "css/data-table.css"
   ],
   "languages": [
     {
@@ -38,8 +39,174 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
-  "packFolders": [],
+  "packs": 
+  [
+    {
+      "name": "general-pack",
+      "label": "General",
+      "path" : "packs/general",
+      "system" : "trench_crusade",
+      "type": "Item"
+    }, 
+    {
+      "name": "trench-pilgrims-models-pack",
+      "label": "Trench Pilgrims Models",
+      "path" : "packs/trench-pilgrims-model-pack",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    },
+    {
+      "name": "trench-pilgrims-item-pack",
+      "label": "Trench Pilgrims Items",
+      "path" : "packs/trench-pilgrims-item-pack",
+      "system" : "trench_crusade",
+      "type": "Item"
+    },    
+    {
+      "name": "new-antioch-item-pack",
+      "label": "New Antioch Items",
+      "path" : "packs/new-antioch-item-pack",
+      "system" : "trench_crusade",
+      "type": "Item"
+    },    
+    {
+      "name": "new-antioch-model-pack",
+      "label": "New Antioch Models",
+      "path" : "packs/new-antioch-model-pack",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    },
+    {
+      "name": "heretic-legion-item-pack",
+      "label": "Heretic Legion Items",
+      "path" : "packs/heretic-legion-item-pack",
+      "system" : "trench_crusade",
+      "type": "Item"
+    },    
+    {
+      "name": "heretic-legion-model-pack",
+      "label": "Heretic Legion Models",
+      "path" : "packs/heretic-legion-model-pack",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    },
+    {
+      "name": "black-grail-item-pack",
+      "label": "The Black Grail Items",
+      "path" : "packs/black-grail-item-pack",
+      "system" : "trench_crusade",
+      "type": "Item"
+    },    
+    {
+      "name": "black-grail-model-pack",
+      "label": "The Black Grail Models",
+      "path" : "packs/black-grail-model-pack",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    },
+    {
+      "name": "iron-sultanate-item-pack",
+      "label": "The Iron Sultanate Items",
+      "path" : "packs/iron-sultanate-item-pack",
+      "system" : "trench_crusade",
+      "type": "Item"
+    },    
+    {
+      "name": "iron-sultanate-model-pack",
+      "label": "The Iron Sultanate Models",
+      "path" : "packs/iron-sultanate-model-pack",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    },
+    {
+      "name": "serpent-item-pack",
+      "label": "Seven-Headed Serpent Items",
+      "path" : "packs/serpent-item-pack",
+      "system" : "trench_crusade",
+      "type": "Item"
+    },    
+    {
+      "name": "serpent-model-pack",
+      "label": "Seven-Headed Serpent Models",
+      "path" : "packs/serpent-model-pack",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    }                                
+  ],
+  "packFolders": 
+  [
+    {
+      "name": "Trench Crusade System",
+      "sorting": "a",
+      "color": "#2F630D",
+      "packs": [
+      ],
+      "folders": [
+        {
+          "name": "General",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "general-pack"
+          ]
+        },
+        {
+          "name": "Trench Pilgrims",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "trench-pilgrims-model-pack",
+            "trench-pilgrims-item-pack"
+          ]
+        },
+        {
+          "name": "New Antioch",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "new-antioch-model-pack",
+            "new-antioch-item-pack"
+          ]
+        },                                    
+        {
+          "name": "Heretic Legion",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "heretic-legion-model-pack",
+            "heretic-legion-item-pack"
+          ]
+        },        
+        {
+          "name": "The Black Grail",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "black-grail-model-pack",
+            "black-grail-item-pack"
+          ]
+        },
+        {
+          "name": "Seven-Headed Serpent",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "serpent-model-pack",
+            "serpent-item-pack"
+          ]
+        },
+        {
+          "name": "The Iron Sultanate",
+          "sorting": "m",
+          "color": "#254C0A",
+          "packs": [
+            "iron-sultanate-model-pack",
+            "iron-sultanate-item-pack"
+          ]
+        }                          
+      ]
+    }    
+  ],
   "socket": false,
   "background": "systems/trench-crusade/assets/anvil-impact.png",
   "documentTypes" :{

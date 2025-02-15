@@ -1,3 +1,18 @@
-<div>
-    <h2> this is my footer....</h2>
-</dig>
+<div class="table-contents">
+  <div class="header-row header-coloring flex-row">
+    <div class="column-header">
+      {{ localize (lookup mySheetLabels "duca") }}
+    </div>
+    <div class="column-header">
+      {{ localize (lookup mySheetLabels "glor") }}
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="column-data">
+      {{ totalDucats }}
+    </div>
+    <div class="column-data">
+      {{ totalGlory }}
+    </div>
+  </div>
+</div>

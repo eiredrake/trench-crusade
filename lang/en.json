@@ -4,7 +4,9 @@
       "her": "Heretic Legion",
       "tre": "Trench Pilgrims",
       "iro" : "The Iron Sultanate",
-      "pna" : "The Principality of New Antioch"
+      "pna" : "The Principality of New Antioch",
+      "bgr" : "The Black Grail",
+      "csh" : "THe Court of the Seven-Headed Serpent"
     },
     "MySheetLabels" : {
       "requ" : "Required Unit",

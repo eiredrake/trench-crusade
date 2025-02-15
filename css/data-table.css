@@ -1,0 +1,47 @@
+div.table-contents div.header-row {
+    align-items: center;
+    display: flex;
+    text-align: left;
+  }
+ 
+  
+div.header-coloring {
+    background-color:#680000;
+    border: 2px groove #878680;
+    height: 28px;
+    padding: 0;
+    font-weight: bold;  
+    color: var(--color-text-light-highlight);
+    text-shadow: 1px 1px var(--color-shadow-dark);
+    vertical-align: inherit;
+    text-indent: initial;
+  }
+  
+div.table-contents div.flex-row {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .trench-crusade form.editable div.sheet-body div.sheet-contents div.sheet-contents-main-body div.flex-row.align-left {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  div.flex-row div.column-header {
+    flex: 1;
+    padding-left: 2px;
+  }
+  
+  div.flex-row div.column-data {
+    flex: 1;
+    padding-left: 2px;
+  }
+  
+  div.column-data-fill {
+    flex: 2;
+    display: flex;
+    padding-left: 2px;
+  }
+  

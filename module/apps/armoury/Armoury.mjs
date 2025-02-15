@@ -46,7 +46,20 @@ export class Armoury extends HandlebarsApplicationMixin(ApplicationV2) {
         this.keywords = Object.entries(CONFIG.TRENCHCRUSADE.keywordsChoices).map(([value, label]) => ({value, label}));
         this.mySheetLabels = CONFIG.TRENCHCRUSADE.mySheetLabels;
 
-        console.info(`mySheetLabels: ${this.mySheetLabels}`);
+        this.totalDucats = 0;
+        this.totalGlory = 0;
+
+        this.generalCompendiumIds = {
+            abilities: { id: 'world.generalabilities'},
+            armor: { id: 'Compendium.world.generalarmor'},
+            equipment: { id: 'Compendium.world.generalequipment'},
+            melee: { id: 'Compendium.world.generalmelee'},
+            ranged: { id: 'Compendium.world.generalranged'},
+        };
+
+        this.generalCompendiums = game.packs.get(this.generalCompendiumIds.abilities.id);
+
+        console.info(`general: ${this.generalCompendiums}`);
 
         this.#dragDrop = this.#createDragDropHandlers();
 	};
@@ -54,14 +67,27 @@ export class Armoury extends HandlebarsApplicationMixin(ApplicationV2) {
     async _preparePartContext(partId, context, _opts) {
 		context = {};
 
+        console.info(`_preparePartContext() partId ${partId} called`);
+
         context.factions = this.factions;
         context.mySheetLabels = this.mySheetLabels;
         context.keywords = this.keywords;
 
-        console.info(`_preparePartContext() partId ${partId} sheet labels() ${context.mySheetLabels} called`);
+        context.generalCompendiums = this.generalCompendiums;
 
+        console.info($`{context.generalCompendiums.abilities}`);
 
-		return context;
+        switch(partId)
+        {
+            case "header":
+                this._prepareHeaderContext(context);
+            case "armoury_body":
+                this._prepareArmouryBodyContext(context);
+            case "footer":
+                this._prepareFooterContext(context);
+        }
+
+        return context;
 	};      
 
     async _prepareHeaderContext(context)
@@ -76,7 +102,8 @@ export class Armoury extends HandlebarsApplicationMixin(ApplicationV2) {
 
     async _prepareFooterContext(context)
     {
-        
+        context.totalDucats = this.totalDucats;
+        context.totalGlory = this.totalGlory;  
     }
 
 

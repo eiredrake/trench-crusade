@@ -397,11 +397,11 @@
 }
 
 .trench-crusade form.editable div.sheet-body div.sheet-contents div.sheet-contents-main-body div.non-flex-row div.header-row {
-  background-color:darkred;
+  background-color:#680000;
+  border: 2px groove #878680;
   height: 28px;
   padding: 0;
   align-items: center;
-  border: 2px groove #eeede0;
   font-weight: bold;  
   color: var(--color-text-light-highlight);
   text-shadow: 1px 1px var(--color-shadow-dark);
@@ -425,10 +425,10 @@
 } */
 
 .trench-crusade form.editable div.sheet-body div.sheet-contents div.sheet-contents-main-body div.header-coloring {
-  background-color:darkred;
+  background-color:#680000;
+  border: 2px groove #878680;
   height: 28px;
   padding: 0;
-  border: 2px groove #eeede0;
   font-weight: bold;  
   color: var(--color-text-light-highlight);
   text-shadow: 1px 1px var(--color-shadow-dark);
@@ -437,7 +437,7 @@
 }
 
 th {
-  background-color: darkred;
+  background-color:#680000;
 }
 
 .trench-crusade form.editable div.sheet-body div.sheet-contents div.sheet-contents-main-body div.flex-row {
