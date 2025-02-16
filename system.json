@@ -47,7 +47,14 @@
       "path" : "packs/general",
       "system" : "trench_crusade",
       "type": "Item"
-    }, 
+    },
+    {
+      "name": "general-roll-tables",
+      "label": "Roll Tables",
+      "path" : "packs/general-roll-tables",
+      "system" : "trench_crusade",
+      "type": "RollTable"
+    },      
     {
       "name": "trench-pilgrims-models-pack",
       "label": "Trench Pilgrims Models",
@@ -147,7 +154,8 @@
           "sorting": "m",
           "color": "#254C0A",
           "packs": [
-            "general-pack"
+            "general-pack",
+            "general-roll-tables"
           ]
         },
         {

@@ -42,7 +42,12 @@
           <input name="system.short_description" type="text" value="{{ system.short_description }}" placeholder=""/>    
         </div>
 
-
+        <div class='flex-row header-coloring column-header'>{{ localize (lookup @root.config.mySheetLabels "weat") }}</div>
+        <div clas="flex-row align-left column-data">
+          <select name="system.weaponType">
+            {{ selectOptions weaponTypes selected=system.weaponType localize=true }}
+          </select>    
+        </div>        
 
         <div class="flex-row header-coloring">
           <div class="column-header">

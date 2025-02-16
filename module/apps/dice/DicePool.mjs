@@ -12,7 +12,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 			frame: true,
 			positioned: true,
 			resizable: false,
-			minimizable: true,
+			minimizable: false,
 		},
 		position: {
 			width: `auto`,
@@ -36,8 +36,10 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	};
 	// #endregion
 
-	// #region Instance Data
 	_diceCount;
+	_formula;
+	_diceBonus;
+	_flavor;
 
 	constructor({
 		diceCount = 0,
@@ -151,17 +153,8 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 		return result;
 	}
 
-	static async #reset(_event)
+	static async #roll(_event, element) 
 	{
-		this._diceBonus = 0;
-		this._diceCount = 0;
-
-		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
-
-		this.render({ parts: [`numberOfDice`] });
-	}
-
-	static async #roll(_event, element) {
 		const rollType = element.getAttribute('data-rollType');
 		console.info(`type: ${rollType}`);
 
@@ -183,7 +176,26 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 				flavor,
 			});
 		}
+
+		this.resetVariables();
 	};
+
+	static async #reset(_event)
+	{
+		// console.info("RESET CALLED");
+
+		this.resetVariables();
+	}	
+
+	async resetVariables()
+	{
+		this._diceBonus = 0;
+		this._diceCount = 0;
+
+		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+
+		this.render({ parts: [`numberOfDice`] });
+	}
 
 	// #endregion
 };
