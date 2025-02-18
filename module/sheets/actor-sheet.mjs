@@ -103,7 +103,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     const features = [];
    
     // Iterate through items, allocating to containers
-    for (let i of context.items) {
+    for (let i of context.items) 
+    {
       i.img = i.img || Item.DEFAULT_ICON;
       // Append to gear.
       if (i.type === 'item') {
@@ -206,26 +207,30 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    console.info("onRoll start");
+    console.info(`onRoll start: ${event.currentTarget}`);
 
-    let roll = new Roll("2d6", this.actor.getRollData());
-    roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor}),
-        flavor: "doing the thing",
-        rollMode: game.settings.get('core', 'rollMode'),
-      }
-    );
+    // let roll = new Roll("2d6", this.actor.getRollData());
+    // roll.toMessage({
+    //     speaker: ChatMessage.getSpeaker({ actor: this.actor}),
+    //     flavor: "doing the thing",
+    //     rollMode: game.settings.get('core', 'rollMode'),
+    //   }
+    // );
+    // return roll;
+    if(dataset.rollType == 'weapon')
+    {
+        var flavor = '';
+        var itemName = element.firstElementChild.title;
+        if(itemName.length > 0)
+            flavor = `${this.actor.name} is making an ATTACK action with ${itemName}`;
 
-
+        new CONFIG.ui.roller({flavor: flavor}).render({force: true});
+    }
     
-
     console.info("onRoll end");
 
-    return roll;
-
     
-
-
+ 
     // Handle item rolls.
     // if (dataset.rollType) 
     // {

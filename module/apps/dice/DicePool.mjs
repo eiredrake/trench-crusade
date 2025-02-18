@@ -57,10 +57,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	};
 
 	get title() {
-		if (!this._flavor) {
-			return super.title;
-		}
-		return `${super.title}: ${this._flavor}`;
+		return super.title;
 	};
 	// #endregion
 
@@ -68,7 +65,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	async _preparePartContext(partId, ctx, _opts) {
 		ctx = {};
 
-        console.info(`partId: ${partId}`);
+        //console.info(`partId: ${partId}`);
 
 		switch (partId) {
 			case `numberOfDice`: {
@@ -85,6 +82,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	async _prepareNumberOfDice(ctx) {
 		ctx.numberOfDice = this._diceCount;
 		ctx.formula = this._formula;
+		ctx.flavor = this._flavor;
 		ctx.diceBonus = this._diceBonus;
 		ctx.decrementDisabled = this._diceCount <= 0;
 	};
@@ -167,6 +165,8 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 			console.info(`rollTable: ${rollTable.name}`);
 			await rollTable.draw(
 				{
+					speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+					flavor,					
 					roll: roll,
 				});
 		}

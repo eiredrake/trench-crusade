@@ -49,6 +49,13 @@
       "type": "Item"
     },
     {
+      "name": "general-models",
+      "label": "Sizing Models",
+      "path" : "packs/general-models",
+      "system" : "trench_crusade",
+      "type": "Actor"
+    },    
+    {
       "name": "general-roll-tables",
       "label": "Roll Tables",
       "path" : "packs/general-roll-tables",
@@ -155,7 +162,8 @@
           "color": "#254C0A",
           "packs": [
             "general-pack",
-            "general-roll-tables"
+            "general-roll-tables",
+            "general-models"
           ]
         },
         {

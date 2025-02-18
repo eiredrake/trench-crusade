@@ -55,6 +55,8 @@ TRENCHCRUSADE.factionsChoices = {
   "tre": 'TRENCHCRUSADE.Factions.tre',
   "iro": 'TRENCHCRUSADE.Factions.iro',
   "pna": 'TRENCHCRUSADE.Factions.pna',
+  "bgr": 'TRENCHCRUSADE.Factions.bgr',
+  "csh": 'TRENCHCRUSADE.Factions.csh',
 };
 
 TRENCHCRUSADE.keywordsChoices = {

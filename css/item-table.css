@@ -11,6 +11,17 @@ ol.items-list li.item.flexrow {
     align-items: baseline;
 }
 
+
+ol.items-list li.item.flexrow div.item-name a.non-rollable img.item-small-icon {
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+}
+
 ol.items-list li.item.flexrow div.item-name a.rollable img.item-small-icon {
     vertical-align: middle;
     width: 24px;
@@ -37,6 +48,7 @@ ol.items-list li.item.flexrow div.item-name a.rollable img.item-small-icon {
     flex-shrink: 2;
 }
 
+
 ol.items-list li.item.flexrow.items-header div.item-header-left {
     color:whitesmoke;
     font-family:'Roboto' sans-serif;
@@ -62,3 +74,20 @@ ol.items-list li.item.flexrow.items-header div.item-header-right {
     flex-basis: 0;
     flex-grow: 1;
 }
+
+.application {
+    --background: revert;
+}
+
+div.flavor-header { 
+    text-align: left;
+    border: 1px solid darkred;
+    background-color: rgb(41, 41, 41);
+    padding: 10px;  
+    word-wrap: normal; 
+    width: 200px    
+  }
+
+  button.application-button {
+    background-color: black;
+  }

@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Attach to Edge",
+        "port": 9222,
+        "request": "attach",
+        "type": "msedge",
+        "webRoot": "${workspaceFolder}",
+        "url" : "http://pillarsofeternity.tplinkdns.com:30000"        
+      },
+      {
+        "name": "Launch in Edge",
+        "port": 9222,
+        "request": "launch",
+        "type": "msedge",
+        "webRoot": "${workspaceFolder}",
+        "url" : "http://pillarsofeternity.tplinkdns.com:30000"        
+      },           
+    ]
+  }

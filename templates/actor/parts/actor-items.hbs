@@ -7,7 +7,11 @@
   {{#each gear as |item id|}}
     <li class='item flexrow' data-item-id='{{item._id}}'>
       <div class='item-name'>
-          <a class='rollable' data-roll-type='item'>
+        {{#if (eq item.type 'weapon') }}
+          <a class='rollable' data-roll-type='weapon'>
+        {{else}}            
+          <a class='non-rollable' data-roll-type='item'>
+        {{/if}}
             <img class="item-small-icon" src="{{item.img}}" title="{{item.name}}" />
             {{item.name}}
           </a>       

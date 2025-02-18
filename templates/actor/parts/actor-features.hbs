@@ -13,7 +13,7 @@
   {{#each features as |item id|}}
     <li class='item flexrow' data-item-id='{{item._id}}'>
       <div class='item-name'>
-          <a class='rollable' data-roll-type='item'>
+          <a class='non-rollable' data-roll-type='item'>
             <img class="item-small-icon" src="{{item.img}}" title="{{item.name}}" />
             {{item.name}}
           </a>       
@@ -22,8 +22,8 @@
         {{ item.system.short_description }}
       </div>
       <div class='item-controls'>
-        <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit" type='feature'}}' >
-          <i class='fas fa-edit'></i>
+        <a class='item-control item-edit' title='{{localize "DOCUMENT.View" type='armor'}}' >
+          <i class='fas fa-eye'></i>
         </a>
         <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete" type='feature'}}' >
           <i class='fas fa-trash'></i>
