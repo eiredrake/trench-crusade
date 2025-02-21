@@ -472,3 +472,7 @@ th {
   display: flex;
   width: 100%;
 }
+
+div.flex-row div.align-right {
+  margin-left: auto;
+}

@@ -1,89 +1,141 @@
-<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
-
-  {{!-- Sheet Header --}}
-  <header class="sheet-header">
-    <img id="actor-profile-img" class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
-
-
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-      <h2 class="faction">
-        <div>
-          <div>
-            <select name="system.faction">
-              {{ selectOptions factions selected=system.faction localize=true }}
-            </select>
-          </div>
-          <div>
-              {{formInput actor.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}     
-          </div>
-        </div>
-        <div>
-          <table class="flex-group-center">
-            <thead>
-              <tr>
-                <th>{{ localize (lookup @root.config.mySheetLabels "limi") }}</th>
-                <th>{{ localize (lookup @root.config.mySheetLabels "requ") }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ formInput actor.system.schema.fields.limit value=system.limit }}</td>
-                <td>{{ formInput actor.system.schema.fields.requiredUnit value=system.requiredUnit }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </h2>
-
-
-      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns.  --}}
-        <div class="resource flex-group-center">
-          <table>
-            <thead>
-              <tr>
-                <th>{{ localize (lookup @root.config.mySheetLabels "duca") }}</th>
-                <th>{{ localize (lookup @root.config.mySheetLabels "glor") }}</th>
-                <th>{{ localize (lookup @root.config.mySheetLabels "blom") }}</th>
-                <th>{{ localize (lookup @root.config.mySheetLabels "bles") }}</th>                
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" name="system.cost.ducats" value="{{system.cost.ducats}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.cost.glory" value="{{system.cost.glory}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.bood.value" value="{{system.blood.value}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.blessings.value" value="{{system.blessings.value}}" data-dtype="Number"/></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      <div class="abilities_table flex-group-center">
-          <table>
-            <thead>
-              <tr>
-                <th>{{localize (lookup @root.config.abilities 'mov')}}</th>
-                <th>{{localize (lookup @root.config.abilities 'ran')}}</th>
-                <th>{{localize (lookup @root.config.abilities 'mel')}}</th>
-                <th>{{localize (lookup @root.config.abilities 'arm')}}</th>
-                <th>{{localize (lookup @root.config.abilities 'bas')}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" name="system.abilities.mov.value" value="{{system.abilities.mov.value}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.abilities.ran.value" value="{{numberFormat system.abilities.ran.value sign=true}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.abilities.arm.value" value="{{system.abilities.arm.value}}" data-dtype="Number"/></td>
-                <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>
-              </tr>          
-            </tbody>
-          </table>
+<form class="{{cssClass}} {{actor.type}}" autocomplete="off">
+   <div class="sheet-container">
+      <!-- slider row -->
+      <div class="slider-button-row fill-width slider-object" style="height: 20px;">
+         {{ localize (lookup @root.config.mySheetLabels "ebas") }}
+         <label class="switch">
+         {{#if isEdit}}
+         <input class="item-edit-slider" type="checkbox" checked>
+         {{else}}
+         <input class="item-edit-slider" type="checkbox">
+         {{/if}}
+         <span class="slider round"></span>
+         </label>
       </div>
-    </div>
-  </header>
+      <unit-sheet class="actor-sheet">
+          <sheet-header class="unit-sheet-header fill-width">
+            <div class="sheet-header-row-1">
+               <div class="sheet-header-row-1-column-1">
+                  <div class="profile-image-block">
+                     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>  
+                  </div>
+               </div>
+               <div class="sheet-header-row-1-column-2">
+                  <div class="sheet-header-row-1-column-2-row-1">
+                     {{#if isEdit}}
+                     <h2 class="charname">
+                        <input name="name" type="text" value="{{actor.name}}" placeholder="Model Name"/>
+                     </h2>
+                     {{else}}
+                     <h2 class="charname">
+                        <input type="text" name="system.unitName" value="{{system.unitName}}" placeHolder="Unit Name" data-dtype="String"/>
+                     </h2>
+                     {{/if}}  
+                  </div>
+                  <div class="sheet-header-row-1-column-2-row-2">
+                     <h4 class="faction-header">{{ localize (lookup @root.config.mySheetLabels "fact") }}</h4>
+                     <select class="fill-width faction-selector" name="system.faction">
+                     {{ selectOptions factions selected=system.faction localize=true }}
+                     </select>  
+                  </div>
+                  <div id="spacer-row" class="sheet-header-row-1-column-2-row-3">
+                  </div>
+                  <div class="sheet-header-row-1-column-2-row-4">
+                     <h4 class="keyword-header">{{ localize (lookup @root.config.mySheetLabels "keyw") }}</h4>
+                  </div>
+                  <div class="sheet-header-row-1-column-2-row-5 tags">
+                     {{#if isEdit}}
+                     {{formInput actor.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}     
+                     {{else}}
+                     <div class="keyword-row input-element-tags">
+                        {{#each computedKeywords as |keyword|}}
+                        <div class="tag keyword-item">
+                           <span>{{ localize (lookup @root.config.keywordsChoices keyword) }}</span>
+                        </div>
+                        {{/each}}                  
+                     </div>
+                     {{/if}}
+                  </div>
+               </div>
+            </div>
+         </sheet-header>
+         <sheet-body class="unit-sheet-body">
+            <div class="unit-sheet-body-row-1">
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="attribute-header">
+                        {{ localize (lookup @root.config.mySheetLabels "requ") }}
+                      </th>
+                      <th class="attribute-header">
+                        {{ localize (lookup @root.config.mySheetLabels "limi") }}
+                      </th>
+                      <th class="attribute-header">
+                        {{ localize (lookup @root.config.mySheetLabels "duca") }}
+                      </th>
+                      <th class="attribute-header">
+                        {{ localize (lookup @root.config.mySheetLabels "glor") }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody style="align-items:center;">
+                    <tr class="attribute-values">
+                      <td>
+                        {{ formInput actor.system.schema.fields.requiredUnit value=system.requiredUnit }}
+                      </td>                    
+                      <td>
+                        {{ formInput actor.system.schema.fields.limit value=system.limit }}
+                      </td>
+                      <td>
+                        {{#if isEdit}}
+                          <input type="text" name="system.cost.ducats" value="{{system.cost.ducats}}" data-dtype="Number"/>
+                        {{else}}
+                          <input type="text" name="system.cost.computedCostDucats" value="{{system.computedCostDucats}}" data-dtype="Number" readonly/>
+                        {{/if}}
+                      </td>
+                      <td>
+                        <input type="text" name="system.cost.glory" value="{{system.cost.glory}}" data-dtype="Number"/>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>  
+              </div>
+
+            <div>
+               <table>
+                  <thead>
+                  <tr>
+                     <th>{{localize (lookup @root.config.abilities 'mov')}}</th>
+                     <th>{{localize (lookup @root.config.abilities 'ran')}}</th>
+                     <th>{{localize (lookup @root.config.abilities 'mel')}}</th>
+                     <th>{{localize (lookup @root.config.abilities 'arm')}}</th>
+                     <th>{{localize (lookup @root.config.abilities 'bas')}}</th>
+                     {{#if isEdit}}
+                     {{else}}
+                        <th>{{ localize (lookup @root.config.mySheetLabels "blom") }}</th>
+                        <th>{{ localize (lookup @root.config.mySheetLabels "infe") }}</th>
+                        <th>{{ localize (lookup @root.config.mySheetLabels "bles") }}</th>
+                     {{/if}}
+                     <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="attribute-values">
+                     <td><input type="text" name="system.abilities.mov.value" value="{{system.abilities.mov.value}}" data-dtype="Number"/></td>
+                     <td><input type="text" name="system.abilities.ran.value" value="{{numberFormat system.abilities.ran.value sign=true}}" data-dtype="Number"/></td>
+                     <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
+                     <td><input type="text" name="system.abilities.arm.value" value="{{system.abilities.arm.value}}" data-dtype="Number"/></td>
+                     <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>
+                     {{#if isEdit}}
+                     {{else}}
+                        <td><input type="text" name="system.bood.value" value="{{system.blood.value}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.infection.value" value="{{system.infection.value}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.blessings.value" value="{{system.blessings.value}}" data-dtype="Number"/></td>
+                     {{/if}}
+                  </tr>          
+                  </tbody>
+               </table>
+            </div>
 
 {{! Sheet Tab Navigation }}
   <nav class='sheet-tabs tabs' data-group='primary'>
@@ -112,5 +164,7 @@
 
   </section>
 
-
+         </sheet-body>         
+      </unit-sheet>
+   </div> <!--sheet-container-->
 </form>

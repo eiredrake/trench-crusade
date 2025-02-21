@@ -1,21 +1,21 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [  
       {
-        "name": "Attach to Edge",
-        "port": 9222,
-        "request": "attach",
-        "type": "msedge",
-        "webRoot": "${workspaceFolder}",
-        "url" : "http://pillarsofeternity.tplinkdns.com:30000"        
-      },
-      {
-        "name": "Launch in Edge",
+        "name": "Launch in Chrome",
         "port": 9222,
         "request": "launch",
-        "type": "msedge",
+        "type": "chrome",
         "webRoot": "${workspaceFolder}",
         "url" : "http://pillarsofeternity.tplinkdns.com:30000"        
-      },           
+      },              
+      {
+        "name": "Attach to Chrome",
+        "port": 9222,
+        "request": "attach",
+        "type": "chrome",
+        "webRoot": "${workspaceFolder}",
+        "url" : "http://pillarsofeternity.tplinkdns.com:30000"        
+      },      
     ]
   }

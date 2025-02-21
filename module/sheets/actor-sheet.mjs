@@ -7,8 +7,11 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['trench-crusade', 'sheet', 'actor'],
+      actions: {
+
+      },
       width: 750,
-      height: 660,
+      height: 700,
       tabs: [
         {
           navSelector: '.sheet-tabs',
@@ -19,12 +22,54 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     });
   }
 
+  
+  /**
+   * Available sheet modes.
+   * @enum {number}
+   */
+  static MODES = {
+    PLAY: 1,
+    EDIT: 2
+  };
+
+    /**
+   * The mode the sheet is currently in.
+   * @type {TrenchCrusadeActorSheet.MODES}
+   */
+  #isEdit = TrenchCrusadeActorSheet.MODES.PLAY;
+
+  get isEdit() {
+
+    var result = this.#isEdit == TrenchCrusadeActorSheet.MODES.EDIT
+
+    console.info(`isEdit is: ${result}`)
+
+    return result;
+  }
+
+  /**
+   * Toggle Edit vs. Play mode
+   *
+   * @this TrenchCrusadeActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  async _toggleMode(event, target) 
+  {
+    if(this.#isEdit == TrenchCrusadeActorSheet.MODES.EDIT)
+      this.#isEdit = TrenchCrusadeActorSheet.MODES.PLAY;
+    else
+      this.#isEdit = TrenchCrusadeActorSheet.MODES.EDIT;
+
+    this.render( );
+
+    console.info(`toggleMode() set to ${this.isEdit}`);
+  }
+
   /** @override */
   get template() {
     return `systems/trench-crusade/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
-
-  /* -------------------------------------------- */
 
   /** @override */
   async getData() {
@@ -34,7 +79,10 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     // editable, the items array
     const context = super.getData();
 
+    context.isEdit = this.isEdit;
+
     context.mySheetLabels = CONFIG.TRENCHCRUSADE.mySheetLabels;
+    context.keywordChoices = CONFIG.TRENCHCRUSADE.keywordsChoices;
     context.factions = CONFIG.TRENCHCRUSADE.factionsChoices;
     context.keywords = Object.entries(CONFIG.TRENCHCRUSADE.keywordsChoices).map(([value, label]) => ({value, label}));
     // Use a safe clone of the actor data for further operations.
@@ -48,11 +96,13 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     context.config = CONFIG.TRENCHCRUSADE;
 
     // Prepare unit data and items.
-    if (actorData.type == 'unit') {
+    if (actorData.type == 'unit') 
+    {
       this._prepareItems(context);
-      this._prepareUnitData(context);
+      this._prepareUnitData(context, this.actor);
     }
 
+    this.actor.unitName = actorData.unitName;
     this.actor.faction = actorData.faction;
     this.actor.keywords = actorData.keywords;
     this.actor.flavorText = actorData.flavorText;
@@ -60,7 +110,6 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     this.actor.baseSize = actorData.baseSize;
     this.actor.blood = actorData.blood;
     this.actor.blessings = actorData.blessings;
-    
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
@@ -86,10 +135,39 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
    *
    * @param {object} context The context object to mutate
    */
-  _prepareUnitData(context) {
+  _prepareUnitData(context, actor) {
     // This is where you can enrich Unit-specific editor fields
     // or setup anything else that's specific to this type
+    actor.system.computedCostDucats = actor.system.cost.ducats;
+    actor.system.computedCostGlory = actor.system.cost.glory; 
     
+    let computedKeywords = actor.system.keywords;
+
+    actor.items.forEach(item => 
+    {
+      actor.system.computedCostDucats += item.system.cost.ducats;
+      actor.system.computedCostGlory += item.system.cost.glory;
+
+      switch(item.type)
+      {       
+        case 'item':
+          {
+            
+          }
+          break;
+        case 'feature':
+          {
+            computedKeywords = [...new Set([...computedKeywords, ...item.system.keywords])];
+          }
+          break;
+        case 'weapon':
+          break;
+        case 'armor':
+          break;
+      }
+    });
+
+    context.computedKeywords = computedKeywords;
   }
 
   /**
@@ -103,22 +181,22 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     const features = [];
    
     // Iterate through items, allocating to containers
-    for (let i of context.items) 
+    for (var item of context.items) 
     {
-      i.img = i.img || Item.DEFAULT_ICON;
+      item.img = item.img || Item.DEFAULT_ICON;
       // Append to gear.
-      if (i.type === 'item') {
-        gear.push(i);
+      if (item.type === 'item') {
+        gear.push(item);
       }
       // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      else if (item.type === 'feature') {
+        features.push(item);
       }
-      else if (i.type == 'weapon'){
-        gear.push(i);
+      else if (item.type == 'weapon'){
+        gear.push(item);
       }
-      else if (i.type == 'armor') {
-        gear.push(i);
+      else if (item.type == 'armor') {
+        gear.push(item);
       }
     }
 
@@ -138,6 +216,10 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
       const li = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId'));
       item.sheet.render(true);
+    });
+
+    html.on('change', 'div.slider-object label.switch input.item-edit-slider', () => {
+      this._toggleMode();
     });
 
     // -------------------------------------------------------------

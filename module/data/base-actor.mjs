@@ -22,6 +22,10 @@ export default class TrenchCrusadeActorBase extends TrenchCrusadeDataModel {
       value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0}),
     });
 
+    schema.infection = new fields.SchemaField({
+      value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0}),
+    });
+
     schema.description = new fields.StringField({ required: true, blank: true });
 
     schema.cost = new fields.SchemaField({

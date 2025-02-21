@@ -26,6 +26,7 @@ TRENCHCRUSADE.mySheetLabels = {
   desc : 'TRENCHCRUSADE.MySheetLabels.desc',
   sdes : 'TRENCHCRUSADE.MySheetLabels.sdes',
   bles : 'TRENCHCRUSADE.MySheetLabels.bles',
+  infe : 'TRENCHCRUSADE.MySheetLabels.infe',
   duca : 'TRENCHCRUSADE.MySheetLabels.duca',
   glor : 'TRENCHCRUSADE.MySheetLabels.glor',
   limi : 'TRENCHCRUSADE.MySheetLabels.limi',
@@ -40,6 +41,7 @@ TRENCHCRUSADE.mySheetLabels = {
   modi : 'TRENCHCRUSADE.MySheetLabels.modi',
   use :  'TRENCHCRUSADE.MySheetLabels.use',
   fact : 'TRENCHCRUSADE.MySheetLabels.fact',
+  ebas : 'TRENCHCRUSADE.MySheetLabels.ebas',
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
