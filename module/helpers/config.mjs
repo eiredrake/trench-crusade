@@ -71,6 +71,7 @@ TRENCHCRUSADE.keywordsChoices = {
   "con" : "TRENCHCRUSADE.Keywords.con",
   "crt" : "TRENCHCRUSADE.Keywords.crt",
   "cum" : "TRENCHCRUSADE.Keywords.cum",
+  "dem" : "TRENCHCRUSADE.Keywords.dem",
   "ele" : "TRENCHCRUSADE.Keywords.ele",
   "fea" : "TRENCHCRUSADE.Keywords.fea",
   "fir" : "TRENCHCRUSADE.Keywords.fir",

@@ -6,7 +6,7 @@
       "iro" : "The Iron Sultanate",
       "pna" : "The Principality of New Antioch",
       "bgr" : "The Black Grail",
-      "csh" : "THe Court of the Seven-Headed Serpent"
+      "csh" : "The Court of the Seven-Headed Serpent"
     },
     
     "MySheetLabels" : {
@@ -55,6 +55,7 @@
       "con" : "CONSUMABLE",
       "crt" : "CRITICAL",
       "cum" : "CUMBERSOME",
+      "dem" : "DEMONIC",
       "ele" : "ELITE",
       "fea" : "FEAR",
       "fir" : "FIRE",

@@ -29,7 +29,7 @@ sheet-header.unit-sheet-header {
 }
 
 sheet-body.unit-sheet-body {
-    height: auto;
+    height: 400px;
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -122,6 +122,11 @@ div.profile-image-block {
     margin: 0 5px;
     background: rgba(0, 0, 0, 0.05);
     border: 2px groove #eeede0;           
+}
+
+
+div.editor-container {
+    background-color: whitesmoke;
 }
 
 /* .sheet .sheet-header .profile-img {

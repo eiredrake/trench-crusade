@@ -10,8 +10,8 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
       actions: {
         attackWithWeapon: this.attackWithWeapon,
       },
-      width: 520,
-      height: 560,
+      width: 650,
+      height: 800,
       tabs: [
         {
           navSelector: '.sheet-tabs',

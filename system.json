@@ -64,6 +64,13 @@
       "type": "RollTable"
     },      
     {
+      "name": "general-rules",
+      "label": "Rules Reference",
+      "path" : "packs/rules-reference",
+      "system" : "trench_crusade",
+      "type": "Journal"
+    },        
+    {
       "name": "trench-pilgrims-models-pack",
       "label": "Trench Pilgrims Models",
       "path" : "packs/trench-pilgrims-model-pack",
