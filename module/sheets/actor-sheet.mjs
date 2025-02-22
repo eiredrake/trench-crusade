@@ -8,7 +8,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['trench-crusade', 'sheet', 'actor'],
       actions: {
-
+        attackWithWeapon: this._attackWithWeapon,
       },
       width: 750,
       height: 700,
@@ -22,6 +22,11 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     });
   }
 
+  
+  async _attackWithWeapon(event) {
+    console.info("ATTACKING");
+
+  }
   
   /**
    * Available sheet modes.
@@ -142,7 +147,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     actor.system.computedCostDucats = actor.system.cost.ducats;
     actor.system.computedCostGlory = actor.system.cost.glory; 
     actor.system.computedArmor = actor.system.abilities.arm.value;
-    
+
     let computedKeywords = actor.system.keywords;
 
     actor.items.forEach(item => 
@@ -226,6 +231,10 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     html.on('change', 'div.slider-object label.switch input.item-edit-slider', () => {
       this._toggleMode();
     });
+
+    html.on('click', '.item-use', () => {
+      this._attackWithWeapon(this);
+    });    
 
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable

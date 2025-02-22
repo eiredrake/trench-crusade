@@ -7,6 +7,9 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['trench-crusade', 'sheet', 'item'],
+      actions: {
+        attackWithWeapon: this.attackWithWeapon,
+      },
       width: 520,
       height: 560,
       tabs: [
@@ -18,6 +21,7 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
       ],
     });
   }
+
 
   /** @override */
   get template() {
@@ -85,6 +89,9 @@ export class TrenchCrusadeItemSheet extends ItemSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+
+
+
 
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
