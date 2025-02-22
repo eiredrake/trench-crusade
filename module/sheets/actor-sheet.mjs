@@ -110,6 +110,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     this.actor.baseSize = actorData.baseSize;
     this.actor.blood = actorData.blood;
     this.actor.blessings = actorData.blessings;
+    this.actor.infection = actorData.infection;
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
@@ -140,6 +141,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     // or setup anything else that's specific to this type
     actor.system.computedCostDucats = actor.system.cost.ducats;
     actor.system.computedCostGlory = actor.system.cost.glory; 
+    actor.system.computedArmor = actor.system.abilities.arm.value;
     
     let computedKeywords = actor.system.keywords;
 
@@ -163,6 +165,9 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
         case 'weapon':
           break;
         case 'armor':
+          {
+            actor.system.computedArmor = item.system.armor;
+          }
           break;
       }
     });

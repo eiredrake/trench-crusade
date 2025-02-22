@@ -92,6 +92,7 @@ Hooks.once('init', function () {
   return preloadHandlebarsTemplates();
 });
 
+
 /* -------------------------------------------- */
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
@@ -111,6 +112,7 @@ Hooks.once('ready', function () {
 
 
 });
+
 
 Hooks.on("getSceneControlButtons", (buttons) => {
   //const tokenButtons = buttons.find(b => b.name === 'token')

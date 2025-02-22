@@ -28,6 +28,7 @@ export default class TrenchCrusadeUnit extends TrenchCrusadeActorBase {
     return schema;
   }
 
+
   prepareDerivedData() {
     // // Loop through ability scores, and add their modifiers to our sheet output.
     // for (const key in this.abilities) {

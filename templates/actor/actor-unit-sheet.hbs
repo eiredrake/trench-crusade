@@ -122,10 +122,17 @@
                   <tbody>
                   <tr class="attribute-values">
                      <td><input type="text" name="system.abilities.mov.value" value="{{system.abilities.mov.value}}" data-dtype="Number"/></td>
-                     <td><input type="text" name="system.abilities.ran.value" value="{{numberFormat system.abilities.ran.value sign=true}}" data-dtype="Number"/></td>
-                     <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
-                     <td><input type="text" name="system.abilities.arm.value" value="{{system.abilities.arm.value}}" data-dtype="Number"/></td>
-                     <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>
+                     {{#if isEdit}}
+                        <td><input type="text" name="system.abilities.ran.value" value="{{numberFormat system.abilities.ran.value sign=true}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.abilities.arm.value" value="{{system.abilities.arm.value}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>
+                     {{else}}
+                        <td><input type="text" name="system.abilities.ran.value" value="{{numberFormat system.abilities.ran.value sign=true}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.computedArmor" value="{{system.computedArmor}}" data-dtype="Number"/></td>
+                        <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>                     
+                     {{/if}}
                      {{#if isEdit}}
                      {{else}}
                         <td><input type="text" name="system.bood.value" value="{{system.blood.value}}" data-dtype="Number"/></td>
