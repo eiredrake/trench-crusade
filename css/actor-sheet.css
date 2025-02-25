@@ -125,11 +125,25 @@ div.profile-image-block {
 }
 
 div.editor {
-    min-width: 20px;
+    width: 100%;
+    height: auto;
+    min-height: 20px;
 }
 
-div.editor-container {
-    background-color: whitesmoke;
+div.editor-content {
+    width: 100%;
+    height: auto;
+    min-height: 20px;
+    background-color: blanchedalmond;
+}
+
+div.actor-model-name {
+    margin-bottom: -30px;
+}
+
+div.actor-unit-name {
+    padding-left: 10px;
+    margin-top: -30px;
 }
 
 /* .sheet .sheet-header .profile-img {

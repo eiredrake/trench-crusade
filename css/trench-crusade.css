@@ -468,10 +468,6 @@ th {
   padding-left: 2px;
 }
 
-.editor {
-  display: flex;
-  width: 100%;
-}
 
 div.flex-row div.align-right {
   margin-left: auto;

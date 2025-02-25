@@ -9,8 +9,8 @@ export class TrenchCrusadeWeaponSheet extends TrenchCrusadeItemSheet {
     static get defaultOptions() {
       return foundry.utils.mergeObject(super.defaultOptions, {
         classes: ['trench-crusade', 'sheet', 'item', 'weapon'],
-        width: 520,
-        height: 630,
+        width: 600,
+        height: 700,
         tabs: [
           {
             navSelector: '.sheet-tabs',

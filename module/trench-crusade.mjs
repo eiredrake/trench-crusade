@@ -109,10 +109,48 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
-
-
 });
 
+
+Hooks.on("renderActorDirectory", (app, [html], context) => {
+  console.info(`APP: ${app}`);
+  console.info(`HTML: ${html}`);
+  console.info(`CONTEXT: ${context}`);
+
+  const entries = html.querySelectorAll('li.directory-item.document.actor.flexrow');
+  if(entries.length <= 0)
+    console.info("No items matched query");
+  else
+    console.info(`${entries.length} items matched query`);
+
+    for(const entry of entries)
+    {
+      const entryId = entry.dataset.entryId;
+      const actor = game.actors.get(entryId);
+
+      const modelName = actor.name;
+      const unitName = actor.system.unitName;
+
+      if(unitName != undefined && unitName.length > 0)
+      {
+        const nameElement = entry.querySelector('h4.entry-name.document-name');
+        if(nameElement != undefined)
+        {
+          console.info(`actor: ${modelName} - ${unitName}`);
+          nameElement.innerHTML = `<a>
+              <div class='actor-model-name'>
+                ${modelName}
+              </div>
+              <div class='actor-unit-name'>
+                ${unitName}
+              </div>
+            </a>`;
+          
+          //nameElement.innerHTML=`<a>${unitName}</a>`;
+        }
+      };
+    };
+});
 
 Hooks.on("getSceneControlButtons", (buttons) => {
   //const tokenButtons = buttons.find(b => b.name === 'token')
