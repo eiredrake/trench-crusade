@@ -315,7 +315,9 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
         var flavor = '';
         var itemName = element.firstElementChild.title;
         if(itemName.length > 0)
+        {
             flavor = `${this.actor.name} is making an ATTACK action with ${itemName}`;
+        }
 
         new CONFIG.ui.roller({flavor: flavor}).render({force: true});
     }

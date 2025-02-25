@@ -90,11 +90,15 @@
                         {{#if isEdit}}
                           <input type="text" name="system.cost.ducats" value="{{system.cost.ducats}}" data-dtype="Number"/>
                         {{else}}
-                          <input type="text" name="system.cost.computedCostDucats" value="{{system.computedCostDucats}}" data-dtype="Number" readonly/>
+                          <input type="text" name="system.computedCostDucats" value="{{system.computedCostDucats}}" data-dtype="Number" readonly/>
                         {{/if}}
                       </td>
                       <td>
-                        <input type="text" name="system.cost.glory" value="{{system.cost.glory}}" data-dtype="Number"/>
+                        {{#if isEdit}}
+                           <input type="text" name="system.cost.glory" value="{{system.cost.glory}}" data-dtype="Number"/>
+                        {{else}}
+                           <input type="text" name="system.computedCostGlory" value="{{system.computedCostGlory}}" data-dtype="Number"/>
+                        {{/if}}
                       </td>
                     </tr>
                   </tbody>
