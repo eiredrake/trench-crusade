@@ -48,15 +48,17 @@ export class TrenchCrusadeWeaponSheet extends TrenchCrusadeItemSheet {
       context.system = itemData.system;
       context.flags = itemData.flags;
       context.short_description = itemData.short_description;
+
       
       // Adding a pointer to CONFIG.TRENCHCRUSADE
       context.config = CONFIG.TRENCHCRUSADE;
 
 
+      this.item.shieldCombo = itemData.shieldCombo;
       this.item.weaponType = itemData.weaponType;
       this.item.range = itemData.range;
-      this.item.modifiers = itemData.modifiers;
-
+      this.item.toHitModifier = itemData.toHitModifier;
+      this.item.toInjureModifier = itemData.toInjureModifier;
   
       return context;
     }

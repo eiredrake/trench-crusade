@@ -37,11 +37,15 @@ TRENCHCRUSADE.mySheetLabels = {
   ranW : 'TRENCHCRUSADE.MySheetLabels.ranW',
   melW : 'TRENCHCRUSADE.MySheetLabels.melW',
   rang : 'TRENCHCRUSADE.MySheetLabels.rang',
+  rng : 'TRENCHCRUSADE.MySheetLabels.rng',
+  toH : 'TRENCHCRUSADE.MySheetLabels.toH',
+  toI : 'TRENCHCRUSADE.MySheetLabels.toI',
   mele : 'TRENCHCRUSADE.MySheetLabels.mele',  
   modi : 'TRENCHCRUSADE.MySheetLabels.modi',
   use :  'TRENCHCRUSADE.MySheetLabels.use',
   fact : 'TRENCHCRUSADE.MySheetLabels.fact',
   ebas : 'TRENCHCRUSADE.MySheetLabels.ebas',
+  scom : 'TRENCHCRUSADE.MySheetLabels.scom'
 };
 
 TRENCHCRUSADE.abilityAbbreviations = {
@@ -90,6 +94,7 @@ TRENCHCRUSADE.keywordsChoices = {
   "str" : "TRENCHCRUSADE.Keywords.str",
   "sul" : "TRENCHCRUSADE.Keywords.sul",
   "tou" : "TRENCHCRUSADE.Keywords.tou",
+  "tc" : "TRENCHCRUSADE.Keywords.tc",
 };
 
 

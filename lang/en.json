@@ -30,7 +30,11 @@
       "modi" : "Modifiers",
       "use"  : "Use",
       "fact" : "Faction",
-      "ebas" : "Edit Base"
+      "ebas" : "Edit Base",
+      "rng" : "Range",
+      "toH" : "To Hit",
+      "toI" : "To Injure",
+      "scom" : "Shield Combo"
     },
     "WeaponTypes" : {
       "r1h" : "1-Handed Ranged",
@@ -73,7 +77,8 @@
       "skr" : "SKIRMISHER",
       "str" : "STRONG",
       "sul" : "SULTANATE",
-      "tou" : "TOUGH"
+      "tou" : "TOUGH",
+      "tc" : "THE COURT"
     },
     "Ability": {
       "Mov": { "long": "Move", "abbr": "mov" },

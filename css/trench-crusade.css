@@ -476,3 +476,7 @@ th {
 div.flex-row div.align-right {
   margin-left: auto;
 }
+
+select {
+  width: 100%;
+}

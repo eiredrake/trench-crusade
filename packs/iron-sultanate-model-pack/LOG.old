@@ -1,3 +1,7 @@
-2025/02/22-05:30:43.099115 7f3f7c515b38 Recovering log #125
-2025/02/22-05:30:43.176909 7f3f7c515b38 Delete type=0 #125
-2025/02/22-05:30:43.181573 7f3f7c515b38 Delete type=3 #123
+2025/02/23-07:52:10.205096 7ff48c7e2b38 Recovering log #140
+2025/02/23-07:52:10.241021 7ff48c7e2b38 Delete type=0 #140
+2025/02/23-07:52:10.241809 7ff48c7e2b38 Delete type=3 #138
+2025/02/23-22:10:02.607354 7fef8a25ab38 Level-0 table #146: started
+2025/02/23-22:10:02.607594 7fef8a25ab38 Level-0 table #146: 0 bytes OK
+2025/02/23-22:10:02.621330 7fef8a25ab38 Delete type=0 #144
+2025/02/23-22:10:02.623026 7fef8a25ab38 Manual compaction at level-0 from '!actors!1EvQoa8ItCgcvyNT' @ 72057594037927935 : 1 .. '!actors.items!tvVlGOwg8O0kIxFh.paCrJKB5j0duJ0D0' @ 0 : 0; will stop at (end)

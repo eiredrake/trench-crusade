@@ -110,13 +110,6 @@
                      <th>{{localize (lookup @root.config.abilities 'mel')}}</th>
                      <th>{{localize (lookup @root.config.abilities 'arm')}}</th>
                      <th>{{localize (lookup @root.config.abilities 'bas')}}</th>
-                     {{#if isEdit}}
-                     {{else}}
-                        <th>{{ localize (lookup @root.config.mySheetLabels "blom") }}</th>
-                        <th>{{ localize (lookup @root.config.mySheetLabels "infe") }}</th>
-                        <th>{{ localize (lookup @root.config.mySheetLabels "bles") }}</th>
-                     {{/if}}
-                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -132,12 +125,6 @@
                         <td><input type="text" name="system.abilities.mel.value" value="{{numberFormat system.abilities.mel.value sign=true}}" data-dtype="Number"/></td>
                         <td><input type="text" name="system.computedArmor" value="{{system.computedArmor}}" data-dtype="Number"/></td>
                         <td><input type="text" name="system.abilities.bas.value" value="{{system.abilities.bas.value}}" data-dtype="Number"/></td>                     
-                     {{/if}}
-                     {{#if isEdit}}
-                     {{else}}
-                        <td><input type="text" name="system.bood.value" value="{{system.blood.value}}" data-dtype="Number"/></td>
-                        <td><input type="text" name="system.infection.value" value="{{system.infection.value}}" data-dtype="Number"/></td>
-                        <td><input type="text" name="system.blessings.value" value="{{system.blessings.value}}" data-dtype="Number"/></td>
                      {{/if}}
                   </tr>          
                   </tbody>

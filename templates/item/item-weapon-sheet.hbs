@@ -16,6 +16,27 @@
         <div class="column-data">
           {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}       
         </div>        
+
+        <div class="flex-row header-coloring">
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "weat") }}
+          </div>
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "scom") }}
+          </div>          
+        </div>
+
+        <div class="flex-row align-left">
+          <div class="column-data align-center">
+            <select name="system.weaponType">
+              {{ selectOptions weaponTypes selected=system.weaponType localize=true }}
+            </select>  
+          </div>
+          <div class="column-data align-center" style="width: 100%;">
+            {{ formInput item.system.schema.fields.shieldCombo value=system.shieldCombo }}            
+          </div>          
+        </div>
+             
         <div class="flex-row header-coloring">
           <div class="column-header">
             {{ localize (lookup @root.config.mySheetLabels "duca") }}
@@ -24,7 +45,7 @@
             {{ localize (lookup @root.config.mySheetLabels "glor") }}
           </div>
         </div>
-        <div class="flex-row align-left">
+        <div class="flex-row align-center">
           <div class="column-data">
             <input type='text' name='system.cost.ducats' value='{{ system.cost.ducats }}' data-dtype='Number' />
           </div>
@@ -42,28 +63,27 @@
           <input name="system.short_description" type="text" value="{{ system.short_description }}" placeholder=""/>    
         </div>
 
-        <div class='flex-row header-coloring column-header'>{{ localize (lookup @root.config.mySheetLabels "weat") }}</div>
-        <div clas="flex-row align-left column-data">
-          <select name="system.weaponType">
-            {{ selectOptions weaponTypes selected=system.weaponType localize=true }}
-          </select>    
-        </div>        
-
         <div class="flex-row header-coloring">
           <div class="column-header">
-            {{ localize (lookup @root.config.mySheetLabels "rang") }}
+            {{ localize (lookup @root.config.mySheetLabels "rng") }}
           </div>
           <div class="column-header">
-            {{ localize (lookup @root.config.mySheetLabels "mele") }}
+            {{ localize (lookup @root.config.mySheetLabels "toH") }}
+          </div>          
+          <div class="column-header">
+            {{ localize (lookup @root.config.mySheetLabels "toI") }}
           </div>
         </div>
 
         <div class="flex-row align-left">
-          <div class="column-data">
+          <div class="column-data align-center">
             <input type='text' name='system.range' value='{{numberFormat system.range}}' data-dtype='Number' />
           </div>
-          <div class="column-data">
-            <input type='text' name='system.modifiers' value='{{system.modifiers}}' data-dtype='String' />
+          <div class="column-data align-center">
+            <input type='text' name='system.toHitModifier' value='{{system.toHitModifier}}' data-dtype='String' />
+          </div>          
+          <div class="column-data align-center">
+            <input type='text' name='system.toInjureModifier' value='{{system.toInjureModifier}}' data-dtype='String' />
           </div>
         </div>
 

@@ -113,9 +113,6 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
     this.actor.flavorText = actorData.flavorText;
     this.actor.limit = actorData.limit;
     this.actor.baseSize = actorData.baseSize;
-    this.actor.blood = actorData.blood;
-    this.actor.blessings = actorData.blessings;
-    this.actor.infection = actorData.infection;
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons

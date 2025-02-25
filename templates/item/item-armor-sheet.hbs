@@ -16,10 +16,17 @@
         <div class="column-data">
           {{formInput item.system.schema.fields.keywords value=system.keywords options=keywords localize=true}}       
         </div>        
-        <div class="flex-row header-coloring">
-          <div class="column-header">
+
+        <div class="">      
+          <div class="column-header header-coloring align-center" style="width: 100px;">
             {{ localize (lookup @root.config.mySheetLabels "armo") }}
+          </div>   
+          <div class="column-data align-center" style="width: 100px;">
+            <input type='text' name='system.armor' value='{{numberFormat system.armor sign=true}}' data-dtype='Number' />
           </div>          
+        </div>
+
+        <div class="flex-row header-coloring">      
           <div class="column-header">
             {{ localize (lookup @root.config.mySheetLabels "duca") }}
           </div>
@@ -27,10 +34,8 @@
             {{ localize (lookup @root.config.mySheetLabels "glor") }}
           </div>
         </div>
-        <div class="flex-row align-left">
-          <div class="column-data">
-            <input type='text' name='system.armor' value='{{numberFormat system.armor sign=true}}' data-dtype='Number' />
-          </div>          
+
+        <div class="flex-row align-center">
           <div class="column-data">
             <input type='text' name='system.cost.ducats' value='{{ system.cost.ducats }}' data-dtype='Number' />
           </div>

@@ -10,19 +10,10 @@ export default class TrenchCrusadeWeapon extends TrenchCrusadeItemBase {
     
     schema.weaponType = new fields.StringField({ required: true, blank: true }); 
     schema.range = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
-    schema.modifiers = new fields.StringField({ required: true, blank: true, initial: "-" }); 
+    schema.toHitModifier = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.toInjureModifier = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.shieldCombo =  new fields.BooleanField( { required: false } );
 
-    // schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
-    // schema.weight = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
-
-    // // Break down roll formula into three independent fields
-    // schema.roll = new fields.SchemaField({
-    //   diceNum: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-    //   diceSize: new fields.StringField({ initial: "d20" }),
-    //   diceBonus: new fields.StringField({ initial: "+@str.mod+ceil(@lvl / 2)" })
-    // })
-
-    // schema.formula = new fields.StringField({ blank: true });
 
     return schema;
   }

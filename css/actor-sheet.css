@@ -124,6 +124,9 @@ div.profile-image-block {
     border: 2px groove #eeede0;           
 }
 
+div.editor {
+    min-width: 20px;
+}
 
 div.editor-container {
     background-color: whitesmoke;

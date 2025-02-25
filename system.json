@@ -68,7 +68,7 @@
       "label": "Rules Reference",
       "path" : "packs/rules-reference",
       "system" : "trench_crusade",
-      "type": "Journal"
+      "type": "JournalEntry"
     },        
     {
       "name": "trench-pilgrims-models-pack",
@@ -171,7 +171,8 @@
           "packs": [
             "general-pack",
             "general-roll-tables",
-            "general-models"
+            "general-models",
+            "general-rules"            
           ]
         },
         {
