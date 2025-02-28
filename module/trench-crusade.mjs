@@ -66,23 +66,23 @@ Hooks.once('init', function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('trench-crusade', TrenchCrusadeActorSheet, {
+  Actors.registerSheet(game.system.id, TrenchCrusadeActorSheet, {
     makeDefault: true,
     label: 'TRENCHCRUSADE.SheetLabels.Actor',
   });
   Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('trench-crusade', TrenchCrusadeItemSheet, {
+  Items.registerSheet(game.system.id, TrenchCrusadeItemSheet, {
     makeDefault: true,
     label: 'TRENCHCRUSADE.SheetLabels.Item',
   });
 
-  Items.registerSheet('trench-crusade', TrenchCrusadeArmorSheet, {
+  Items.registerSheet(game.system.id, TrenchCrusadeArmorSheet, {
     makeDefault: true,
     label: 'TRENCHCRUSADE.SheetLabels.Armor',
     types: ['armor']
   });
 
-  Items.registerSheet('trench-crusade', TrenchCrusadeWeaponSheet, {
+  Items.registerSheet(game.system.id, TrenchCrusadeWeaponSheet, {
     makeDefault: true,
     label: 'TRENCHCRUSADE.SheetLabels.Weapon',
     types: ['weapon']
@@ -109,7 +109,90 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+
+  Hooks.on('combatRound', (combat, updateData, updateOptions) => updateCombatRound(combat, updateData, updateOptions));
+
+  Hooks.on('preUpdateToken', (token, change) =>preUpdateToken(token, change));  
 });
+
+Hooks.once('canvasInit', (canvas) => {
+  Hooks.on('dropCanvasData', (canvas, dropData) => {
+
+    if( dropData.type === 'Actor') {
+      console.info(`uuid: ${dropData.uuid}`);
+      let uuid = foundry.utils.parseUuid(dropData.uuid);
+      let actor = game.actors.get(uuid.id);
+
+      if(actor != undefined)
+      {
+        const token = actor.prototypeToken;
+        if(token != undefined)
+        {
+          // is an actual token
+          actor.setFlag('trench-crusade.purchased-unit', true);
+          actor.setFlag('trench-crusade.has-activated', false);
+
+          token.update({'ring.colors.ring': '#00FF00'});
+          token.update({'ring.enabled': 'true'});
+        }
+      }
+    };
+  });
+});
+
+
+function preUpdateToken(token, change) {
+  console.info(`preUpdateToken called`);
+  if(token != null)
+  {
+    const actor = token.actor;
+    if(actor != undefined && change.x != undefined && change.y != undefined)
+    {
+      if(game.combat != undefined && game.combat.current.turn != null)
+      {
+        if(actor.inCombat)
+          {
+            const hasActivated = actor.getFlag(game.system.id, 'has-activated');
+            console.info(`has-activated: ${hasActivated}`);
+            if(hasActivated == undefined || hasActivated == false)
+            {             
+              foundry.utils.setProperty(change, 'ring.colors.ring', '#FF0000');
+              foundry.utils.setProperty(change, 'flags.trench-crusade.has-activated', true);
+
+              actor.setFlag('trench-crusade', 'has-activated', true);
+    
+              console.info(`actor ${actor.name} ring color set to red`);
+              console.info(`actor ${actor.name} has-activated flag set to TRUE`);
+            }
+    
+            console.info(`preUpdateToken force render on : ${actor.id}`);
+          }
+      }
+    }
+  }
+};
+
+function updateCombatRound(combat, updateData, updateOptions) {
+  console.info(`updateCombatRound called`);
+
+  for(const combatant of combat?.combatants ?? [])
+    {
+      const actor = game.actors.get(combatant.actor.id);
+      const token = combatant.token;
+      const name = actor.name;
+      
+      const hasActivated = combatant.actor.getFlag(game.system.id, 'has-activated');
+      console.info(`actor ${actor.name} has-activated flag IS set to ${hasActivated}}.`);
+
+      if(hasActivated)
+      {       
+        combatant.actor.setFlag('trench-crusade', 'has-activated', false);
+        token.update({'ring.colors.ring': '#00FF00'});
+
+        console.info(`updateCombatRound forced render on : ${actor.id}`);
+      }
+    }
+};
 
 
 Hooks.on("renderActorDirectory", (app, [html], context) => {
@@ -156,6 +239,11 @@ Hooks.on("getSceneControlButtons", (buttons) => {
   //const tokenButtons = buttons.find(b => b.name === 'token')
   //tokenButtons.tools.push() // put the tool data in here
 });
+
+
+
+
+
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
