@@ -110,7 +110,11 @@ Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
 
-  Hooks.on('combatRound', (combat, updateData, updateOptions) => updateCombatRound(combat, updateData, updateOptions));
+  Hooks.on('combatStart', (combat, updateData) => combatStart(combat, updateData));
+
+  Hooks.on('deleteCombat', (combat, updateData) => combatStop(combat, updateData));
+
+  Hooks.on('combatRound', (combat, updateData, updateOptions) => combatRound(combat, updateData, updateOptions));
 
   Hooks.on('preUpdateToken', (token, change) =>preUpdateToken(token, change));  
 });
@@ -172,24 +176,46 @@ function preUpdateToken(token, change) {
   }
 };
 
-function updateCombatRound(combat, updateData, updateOptions) {
+function combatStart(combat, updateData) {
+  console.info(`combatStart called`);
+
+  for(const placableToken of canvas.tokens.placeables)
+  {
+    placableToken.document.toggleCombatant();   
+  }
+}
+
+function combatStop(combat, updateData) {
+  console.info(`combatStop called`);
+  for(const combatant of combat?.combatants ?? []) 
+  {
+      const token = combatant.token;
+      const hasActivated = combatant.actor.getFlag(game.system.id, 'has-activated');
+      if(hasActivated)
+      {       
+        combatant.actor.setFlag('trench-crusade', 'has-activated', false);
+        token.update({'ring.colors.ring': '#00FF00'});
+
+        console.info(`updateCombatRound forced render on : ${combatant.actor.id}`);
+      }
+  }      
+};
+
+function combatRound(combat, updateData, updateOptions) {
   console.info(`updateCombatRound called`);
 
   for(const combatant of combat?.combatants ?? [])
     {
-      const actor = game.actors.get(combatant.actor.id);
-      const token = combatant.token;
-      const name = actor.name;
-      
+      const token = combatant.token;     
       const hasActivated = combatant.actor.getFlag(game.system.id, 'has-activated');
-      console.info(`actor ${actor.name} has-activated flag IS set to ${hasActivated}}.`);
+      console.info(`actor ${combatant.actor.name} has-activated flag IS set to ${hasActivated}}.`);
 
       if(hasActivated)
       {       
         combatant.actor.setFlag('trench-crusade', 'has-activated', false);
         token.update({'ring.colors.ring': '#00FF00'});
 
-        console.info(`updateCombatRound forced render on : ${actor.id}`);
+        console.info(`updateCombatRound forced render on : ${combatant.actor.id}`);
       }
     }
 };
