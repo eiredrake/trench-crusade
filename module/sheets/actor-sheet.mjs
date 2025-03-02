@@ -23,9 +23,49 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
   }
 
   
-  async _attackWithWeapon(event) {
+  async _attackWithWeapon(sheet, event) {
     console.info("ATTACKING");
+    const listItem = $(event.currentTarget).parents('.item');
+    const selectedItem = this.actor.items.get(listItem.data('itemId'));
 
+    if(listItem != undefined && selectedItem != undefined && selectedItem.type == 'weapon')
+    {
+      const token = sheet.object.token;
+      const system = sheet.object.system;
+      const itemUuid = selectedItem.uuid;
+
+      const itemDocument = await fromUuid(itemUuid);
+      if(token != undefined && system != undefined && itemDocument != undefined)
+      {
+        const weaponType = itemDocument.system.weaponType;
+        const toHitModifier = itemDocument.system.toHitModifier;
+
+        let totalDice = toHitModifier;
+        switch(weaponType)
+        {
+          case 'm2h':
+          case 'm1h':
+            totalDice += system.abilities.mel.value;
+            break;
+          case 'r1h':
+          case 'r2h':
+          case 'gre':
+            totalDice += system.abilities.ran.value;
+            break;
+        }
+        const name = sheet.object.name;
+        const unitName = sheet.object.system.unitName;
+
+        let flavor = `${unitName} is attacking with its ${itemDocument.name}`;
+  
+        new CONFIG.ui.roller(
+          {
+            diceCount: totalDice,
+            flavor: flavor,
+          }
+        ).render({force: true});
+      }
+    }
   }
   
   /**
@@ -168,7 +208,7 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
           break;
         case 'armor':
           {
-            actor.system.computedArmor = item.system.armor;
+            actor.system.computedArmor += item.system.armor;
           }
           break;
       }
@@ -229,8 +269,8 @@ export class TrenchCrusadeActorSheet extends ActorSheet {
       this._toggleMode();
     });
 
-    html.on('click', '.item-use', () => {
-      this._attackWithWeapon(this);
+    html.on('click', '.item-use', (event) => {
+      this._attackWithWeapon(this, event);
     });    
 
     // -------------------------------------------------------------

@@ -75,10 +75,6 @@ ol.items-list li.item.flexrow.items-header div.item-header-right {
     flex-grow: 1;
 }
 
-.application {
-    --background: revert;
-}
-
 div.flavor-header { 
     text-align: left;
     border: 1px solid darkred;

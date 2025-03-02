@@ -476,3 +476,7 @@ div.flex-row div.align-right {
 select {
   width: 100%;
 }
+
+div.die-roller-window {
+  background-color: #444;
+}

@@ -21,6 +21,8 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 		actions: {
 			diceCountDelta: this.#diceCountDelta,
 			diceBonusDelta: this.#diceBonusDelta,
+			rollBloodbath: this.#rollBloodbath,
+			rolld3: this.#rolld3,
 			roll: this.#roll,
 			reset: this.#reset,
 		},
@@ -41,19 +43,28 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 	_diceBonus;
 	_flavor;
 
-	constructor({
-		diceCount = 0,
-		diceBonus = 0,
-		formula = '2d6kh2',
-		flavor = ``,
-		...opts
-	} = {}) {
+	constructor(
+		{diceCount, diceBonus, formula, flavor, ...opts} = {}
+	) 
+	{
 		super(opts);
 
 		this._flavor = flavor;
-		this._diceCount = diceCount;
-		this._diceBonus = diceBonus;
-		this._formula = formula;
+
+		if(diceCount > 0)
+			this._diceCount = diceCount;
+		else
+			this._diceCount = 0;
+
+		if(diceBonus > 0)
+			this._diceBonus = diceBonus;
+		else
+			this._diceBonus = 0;
+
+		if(formula)
+			this._formula = formula;
+		else
+			this._formula = this.compileFormula(this._diceCount, this._diceBonus);
 	};
 
 	get title() {
@@ -107,7 +118,7 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 
 		//console.info(`diceBonus: ${this._diceBonus}`);
 
-		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+		this._formula = this.compileFormula(this._diceCount, this._diceBonus);
 
 		this.render({ parts: [`numberOfDice`] });
 	}
@@ -132,12 +143,12 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 
 //console.info(`diceCount: ${this._diceCount}`);
 
-		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+		this._formula = this.compileFormula(this._diceCount, this._diceBonus);
 
 		this.render({ parts: [`numberOfDice`] });
 	};
 
-	static compileFormula(diceCount, bonus)
+	compileFormula(diceCount, bonus, diceToKeep = 2)
 	{
 		let bonusOperator = "";
 		if(bonus > 0)
@@ -145,10 +156,52 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 		else if(bonus < 0)
 			bonusOperator = `${bonus}`;
 
-		let result = `${2+Math.abs(diceCount)}d6k${diceCount < 0 ? 'l' : 'h'}2`;
+		let result = `${2+Math.abs(diceCount)}d6k${diceCount < 0 ? 'l' : 'h'}${diceToKeep}`;
 		result = result + bonusOperator;
 
 		return result;
+	}
+
+	static async #rollBloodbath(_event, element) 
+	{
+		const rollType = element.getAttribute('data-rollType');
+		console.info(`type: ${rollType}`);
+
+		let flavor = this._flavor;
+
+		flavor += " (BLOODBATH)";
+
+		const roll = new Roll(this.compileFormula(this._diceCount + 1, this._diceBonus, 3));
+
+		let rollTable = await fromUuid(rollType);
+		if(rollTable)
+		{
+			console.info(`rollTable: ${rollTable.name}`);
+			await rollTable.draw(
+				{
+					speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+					flavor,					
+					roll: roll,
+				});
+		}
+		else{	
+			await roll.toMessage({
+				speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+				flavor,
+			});
+		}
+
+		this.resetVariables();
+	}
+
+	static async #rolld3(_event, element)
+	{
+		const roll = new Roll('1d3');
+		await roll.toMessage({
+			speaker: ChatMessage.getSpeaker({actor: this.actions}),
+			flavor: this._flavor,
+			roll: roll,
+		});
 	}
 
 	static async #roll(_event, element) 
@@ -189,10 +242,10 @@ export class DicePool extends HandlebarsApplicationMixin(ApplicationV2) {
 
 	async resetVariables()
 	{
-		this._diceBonus = 0;
 		this._diceCount = 0;
+		this._diceBonus = 0;
 
-		this._formula = DicePool.compileFormula(this._diceCount, this._diceBonus);
+		this._formula = this.compileFormula(this._diceCount, this._diceBonus);
 
 		this.render({ parts: [`numberOfDice`] });
 	}

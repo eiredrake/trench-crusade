@@ -43,7 +43,7 @@ Hooks.once('init', function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
+    formula: '1',
     decimals: 2,
   };
 
@@ -126,6 +126,7 @@ Hooks.once('canvasInit', (canvas) => {
       console.info(`uuid: ${dropData.uuid}`);
       let uuid = foundry.utils.parseUuid(dropData.uuid);
       let actor = game.actors.get(uuid.id);
+      
 
       if(actor != undefined)
       {
@@ -136,6 +137,7 @@ Hooks.once('canvasInit', (canvas) => {
           actor.setFlag('trench-crusade.purchased-unit', true);
           actor.setFlag('trench-crusade.has-activated', false);
 
+          token.update({'occludable': '{ radius: 3}'});
           token.update({'ring.colors.ring': '#00FF00'});
           token.update({'ring.enabled': 'true'});
         }
