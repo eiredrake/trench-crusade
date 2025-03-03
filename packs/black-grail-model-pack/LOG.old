@@ -1,3 +1,23 @@
-2025/02/24-17:11:30.669701 7f6cd217eb38 Recovering log #141
-2025/02/24-17:11:30.727658 7f6cd217eb38 Delete type=0 #141
-2025/02/24-17:11:30.728905 7f6cd217eb38 Delete type=3 #139
+2025/03/02-23:44:42.993398 7fb47426db38 Recovering log #146
+2025/03/02-23:44:42.995422 7fb47426db38 Level-0 table #148: started
+2025/03/02-23:44:43.047567 7fb47426db38 Level-0 table #148: 15545 bytes OK
+2025/03/02-23:44:43.070648 7fb47426db38 Delete type=0 #146
+2025/03/02-23:44:43.071185 7fb47426db38 Delete type=3 #145
+2025/03/02-23:49:43.584794 7fb1f1bdab38 Level-0 table #151: started
+2025/03/02-23:49:43.584938 7fb1f1bdab38 Level-0 table #151: 0 bytes OK
+2025/03/02-23:49:43.603869 7fb1f1bdab38 Delete type=0 #149
+2025/03/02-23:49:43.626512 7fb1f1bdab38 Manual compaction at level-0 from '!actors!9GmLBxWFug4JWu34' @ 72057594037927935 : 1 .. '!actors.items!wYvj9qoEwksW70Tf.ynDmryh6QUXeSCkh' @ 0 : 0; will stop at '!actors!wYvj9qoEwksW70Tf' @ 179 : 1
+2025/03/02-23:49:43.626927 7fb1f1bdab38 Compacting 1@0 + 0@1 files
+2025/03/02-23:49:43.636859 7fb1f1bdab38 Generated table #152@0: 8 keys, 15545 bytes
+2025/03/02-23:49:43.636927 7fb1f1bdab38 Compacted 1@0 + 0@1 files => 15545 bytes
+2025/03/02-23:49:43.655863 7fb1f1bdab38 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/03/02-23:49:43.658707 7fb1f1bdab38 Delete type=2 #148
+2025/03/02-23:49:43.699138 7fb1f1bdab38 Manual compaction at level-0 from '!actors!wYvj9qoEwksW70Tf' @ 179 : 1 .. '!actors.items!wYvj9qoEwksW70Tf.ynDmryh6QUXeSCkh' @ 0 : 0; will stop at (end)
+2025/03/02-23:49:43.806230 7fb1f1bdab38 Manual compaction at level-1 from '!actors!9GmLBxWFug4JWu34' @ 72057594037927935 : 1 .. '!actors.items!wYvj9qoEwksW70Tf.ynDmryh6QUXeSCkh' @ 0 : 0; will stop at '!actors!wYvj9qoEwksW70Tf' @ 179 : 1
+2025/03/02-23:49:43.806304 7fb1f1bdab38 Compacting 1@1 + 1@2 files
+2025/03/02-23:49:43.820728 7fb1f1bdab38 Generated table #153@1: 39 keys, 34607 bytes
+2025/03/02-23:49:43.820795 7fb1f1bdab38 Compacted 1@1 + 1@2 files => 34607 bytes
+2025/03/02-23:49:43.850712 7fb1f1bdab38 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/03/02-23:49:43.851972 7fb1f1bdab38 Delete type=2 #138
+2025/03/02-23:49:43.852648 7fb1f1bdab38 Delete type=2 #152
+2025/03/02-23:49:43.939731 7fb1f1bdab38 Manual compaction at level-1 from '!actors!wYvj9qoEwksW70Tf' @ 179 : 1 .. '!actors.items!wYvj9qoEwksW70Tf.ynDmryh6QUXeSCkh' @ 0 : 0; will stop at (end)

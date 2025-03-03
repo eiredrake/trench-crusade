@@ -64,6 +64,8 @@ Hooks.once('init', function () {
     weapon: models.TrenchCrusadeWeapon
   }
 
+
+
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet(game.system.id, TrenchCrusadeActorSheet, {
@@ -122,26 +124,35 @@ Hooks.once('ready', function () {
 Hooks.once('canvasInit', (canvas) => {
   Hooks.on('dropCanvasData', (canvas, dropData) => {
 
-    if( dropData.type === 'Actor') {
+    if( dropData.type === 'Actor') 
+    {
       console.info(`uuid: ${dropData.uuid}`);
       let uuid = foundry.utils.parseUuid(dropData.uuid);
       let actor = game.actors.get(uuid.id);
       
-
       if(actor != undefined)
       {
-        const token = actor.prototypeToken;
+        actor.update(
+          {
+            flags: {},
+            occludable : { radius: 3},
+            'ring.colors.ring': '#00FF00',
+            'ring.enabled' : true,
+          });
+        actor.setFlag('trench-crusade', '.purchased-unit', true);
+        actor.setFlag('trench-crusade', '.has-activated', false);
+
+        const token = actor.token != null ? actor.token :  actor.prototypeToken;
         if(token != undefined)
         {
-          // is an actual token
-          actor.setFlag('trench-crusade.purchased-unit', true);
-          actor.setFlag('trench-crusade.has-activated', false);
-
+          token.update({flags: {} });
           token.update({'occludable': '{ radius: 3}'});
           token.update({'ring.colors.ring': '#00FF00'});
           token.update({'ring.enabled': 'true'});
         }
       }
+
+      actor.render({force: true});
     };
   });
 });
@@ -166,6 +177,13 @@ function preUpdateToken(token, change) {
               foundry.utils.setProperty(change, 'flags.trench-crusade.has-activated', true);
 
               actor.setFlag('trench-crusade', 'has-activated', true);
+
+              token.update(
+                {
+                  'ring.colors.ring': '#00FF00',
+                  'flags.trench-crusade.has-activated' : true,
+                }
+              );
     
               console.info(`actor ${actor.name} ring color set to red`);
               console.info(`actor ${actor.name} has-activated flag set to TRUE`);
