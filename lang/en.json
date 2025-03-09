@@ -45,6 +45,7 @@
     },
     "SheetLabels": {
       "Actor": "TrenchCrusade Unit Sheet",
+      "Placeable" : "Trench Crusade Placable Sheet",
       "Item": "TrenchCrusade Item Sheet",
       "Armor": "TrenchCrusade Armor Sheet",
       "Weapon" : "TrenchCrusade Weapon Sheet"
@@ -93,7 +94,8 @@
   },
   "TYPES": {
     "Actor": {
-      "unit": "unit"
+      "unit": "unit",
+      "placeable" : "placeable"
     },
     "Item": {
       "item": "Equipment",

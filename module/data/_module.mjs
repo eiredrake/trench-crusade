@@ -1,5 +1,6 @@
 // Export Actors
 export {default as TrenchCrusadeActorBase} from "./base-actor.mjs";
+export {default as PlaceableActorBase } from "./actor-placeableActor.mjs";
 export {default as TrenchCrusadeUnit} from "./actor-unit.mjs";
 
 // Export Items

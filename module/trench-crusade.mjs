@@ -3,11 +3,14 @@ import { TrenchCrusadeActor } from './documents/actor.mjs';
 import { TrenchCrusadeItem } from './documents/item.mjs';
 import { TrenchCrusadeArmor } from './documents/armor.mjs';
 import { TrenchCrusadeWeapon } from './documents/weapon.mjs';
+import { TrenchCrusadePlaceableActor } from './documents/placeableActor.mjs';
 // Import sheet classes.
 import { TrenchCrusadeActorSheet } from './sheets/actor-sheet.mjs';
 import { TrenchCrusadeItemSheet } from './sheets/item-sheet.mjs';
 import { TrenchCrusadeArmorSheet } from './sheets/item-armor-sheet.mjs';
 import { TrenchCrusadeWeaponSheet } from './sheets/item-weapon-sheet.mjs';
+import { TrenchCrusadePlaceableSheet } from './sheets/actor-placable.mjs';
+
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { TRENCHCRUSADE } from './helpers/config.mjs';
@@ -16,6 +19,7 @@ import * as models from './data/_module.mjs';
 
 import {DicePool} from "./apps/dice/DicePool.mjs";
 import {Armoury} from "./apps/armoury/Armoury.mjs";
+import tokenEventHandler from './helpers/tokenEventHandler.mjs';
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -29,6 +33,7 @@ Hooks.once('init', function () {
     TrenchCrusadeItem,
     TrenchCrusadeArmor,
     TrenchCrusadeWeapon,
+    TrenchCrusadePlaceableActor,
     rollItemMacro,
   };
 
@@ -55,7 +60,9 @@ Hooks.once('init', function () {
   // with the Unit as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
     unit: models.TrenchCrusadeUnit,
+    placeable: models.PlaceableActorBase
   }
+  
   CONFIG.Item.documentClass = TrenchCrusadeItem;
   CONFIG.Item.dataModels = {
     item: models.TrenchCrusadeItem,
@@ -72,6 +79,13 @@ Hooks.once('init', function () {
     makeDefault: true,
     label: 'TRENCHCRUSADE.SheetLabels.Actor',
   });
+
+  Actors.registerSheet(game.system.id, TrenchCrusadePlaceableSheet, {
+    makeDefault: false,
+    label: 'TRENCHCRUSADE.SheetLabels.Placeable',
+  });
+
+
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet(game.system.id, TrenchCrusadeItemSheet, {
     makeDefault: true,
@@ -121,40 +135,18 @@ Hooks.once('ready', function () {
   Hooks.on('preUpdateToken', (token, change) =>preUpdateToken(token, change));  
 });
 
-Hooks.once('canvasInit', (canvas) => {
-  Hooks.on('dropCanvasData', (canvas, dropData) => {
+Hooks.on('createToken', (token, options, userId) => 
+{
+  tokenEventHandler.onCreateToken(token, options, userId);
+});
 
-    if( dropData.type === 'Actor') 
-    {
-      console.info(`uuid: ${dropData.uuid}`);
-      let uuid = foundry.utils.parseUuid(dropData.uuid);
-      let actor = game.actors.get(uuid.id);
-      
-      if(actor != undefined)
-      {
-        actor.update(
-          {
-            flags: {},
-            occludable : { radius: 3},
-            'ring.colors.ring': '#00FF00',
-            'ring.enabled' : true,
-          });
-        actor.setFlag('trench-crusade', '.purchased-unit', true);
-        actor.setFlag('trench-crusade', '.has-activated', false);
+Hooks.on('deleteToken', (token, options, userId) => 
+{
+  tokenEventHandler.onDeleteToken(token, options, userId);
+});      
 
-        const token = actor.token != null ? actor.token :  actor.prototypeToken;
-        if(token != undefined)
-        {
-          token.update({flags: {} });
-          token.update({'occludable': '{ radius: 3}'});
-          token.update({'ring.colors.ring': '#00FF00'});
-          token.update({'ring.enabled': 'true'});
-        }
-      }
-
-      actor.render({force: true});
-    };
-  });
+Hooks.on('updateToken', (token, options) => {
+  tokenEventHandler.onMoveToken(token, options);
 });
 
 
@@ -165,9 +157,10 @@ function preUpdateToken(token, change) {
     const actor = token.actor;
     if(actor != undefined && change.x != undefined && change.y != undefined)
     {
-      if(game.combat != undefined && game.combat.current.turn != null)
+      switch(actor.type)
       {
-        if(actor.inCombat)
+        case token.ACTOR_UNIT_TYPE:
+          if(actor.inCombat && game.combat != undefined && game.combat.current.turn != undefined)
           {
             const hasActivated = actor.getFlag(game.system.id, 'has-activated');
             console.info(`has-activated: ${hasActivated}`);
@@ -188,9 +181,11 @@ function preUpdateToken(token, change) {
               console.info(`actor ${actor.name} ring color set to red`);
               console.info(`actor ${actor.name} has-activated flag set to TRUE`);
             }
-    
-            console.info(`preUpdateToken force render on : ${actor.id}`);
           }
+          break;
+        case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+          
+          break;
       }
     }
   }
@@ -201,7 +196,16 @@ function combatStart(combat, updateData) {
 
   for(const placableToken of canvas.tokens.placeables)
   {
-    placableToken.document.toggleCombatant();   
+    const actor = placableToken.actor;
+    switch(actor.type)
+    {
+      case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+        tokenEventHandler.stakePlaceable(actor, placableToken);
+        break;
+      case tokenEventHandler.ACTOR_UNIT_TYPE:
+        placableToken.document.toggleCombatant();   
+        break;
+    }
   }
 }
 
@@ -265,7 +269,7 @@ Hooks.on("renderActorDirectory", (app, [html], context) => {
         const nameElement = entry.querySelector('h4.entry-name.document-name');
         if(nameElement != undefined)
         {
-          console.info(`actor: ${modelName} - ${unitName}`);
+          //console.info(`render actor: ${modelName} - ${unitName}`);
           nameElement.innerHTML = `<a>
               <div class='actor-model-name'>
                 ${modelName}

@@ -238,6 +238,9 @@
     "Actor" : {
       "unit": {
         "htmlFields" : ["biography.value", "biography.gm"]
+      },
+      "placeable" : {
+        "htmlFields" : ["description"]
       }
     },
     "Item" : {
