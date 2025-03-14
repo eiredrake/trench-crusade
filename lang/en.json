@@ -44,11 +44,11 @@
       "gre" : "Grenade"
     },
     "SheetLabels": {
-      "Actor": "TrenchCrusade Unit Sheet",
-      "Placeable" : "Trench Crusade Placable Sheet",
-      "Item": "TrenchCrusade Item Sheet",
-      "Armor": "TrenchCrusade Armor Sheet",
-      "Weapon" : "TrenchCrusade Weapon Sheet"
+      "Actor": "Trench Crusade Unit Sheet",
+      "Item": "Trench Crusade Item Sheet",
+      "Armor": "Trench Crusade Armor Sheet",
+      "Weapon" : "Trench Crusade Weapon Sheet",
+      "Trap" : "Trench Crusade Trap Sheet"
     },    
     "Keywords": {
       "art" : "ARTIFICIAL",
@@ -95,7 +95,7 @@
   "TYPES": {
     "Actor": {
       "unit": "unit",
-      "placeable" : "placeable"
+      "trap" : "trap"
     },
     "Item": {
       "item": "Equipment",

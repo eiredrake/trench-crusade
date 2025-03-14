@@ -1,0 +1,70 @@
+<form class="{{cssClass}} {{actor.type}}" autocomplete="off">
+   <div class="sheet-container">
+      <unit-sheet class="actor-sheet">
+          <sheet-header class="unit-sheet-header fill-width">
+            <div class="sheet-header-row-1">
+               <div class="sheet-header-row-1-column-1">
+                  <div class="profile-image-block">
+                     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>  
+                  </div>
+               </div>
+               <div class="sheet-header-row-1-column-2">
+                  <div class="sheet-header-row-1-column-2-row-1">
+                     <h2 class="charname">
+                        <input name="name" type="text" value="{{actor.name}}" placeholder="Model Name"/>
+                     </h2>
+                  </div>
+                  <div>
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>{{ localize (lookup @root.config.mySheetLabels "duca") }}</th>
+                              <th>{{ localize (lookup @root.config.mySheetLabels "glor") }}</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td><input type="text" name="system.cost.ducats" value="{{system.cost.ducats}}" data-dtype="Number"/></td>
+                              <td><input type="text" name="system.cost.glory" value="{{system.cost.glory}}" data-dtype="Number"/></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div>
+                     <table>
+                        <thead>
+                           <tr>
+                              <th></th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </sheet-header>
+        
+
+
+         {{! Sheet Tab Navigation }}
+         <nav class='sheet-tabs tabs' data-group='primary'>
+               <a class='item' data-tab='description'>Description</a>
+         </nav>
+
+         {{! Sheet Body }}
+         <section class='sheet-body'>
+
+               {{! Description Tab }}
+               <div class='tab description' data-group='primary' data-tab='description' style="height: 300px;">
+               {{! Editors must receive enriched text data from getData to properly handle rolls }}
+               {{editor enrichedDescription target='system.description' engine='prosemirror' button=true editable=true }}
+               </div>
+         </section>
+    
+      </unit-sheet>
+   </div> <!--sheet-container-->
+</form>

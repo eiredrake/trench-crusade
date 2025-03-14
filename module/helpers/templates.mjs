@@ -8,5 +8,6 @@ export const preloadHandlebarsTemplates = async function () {
     // Actor partials.
     'systems/trench-crusade/templates/actor/parts/actor-features.hbs',
     'systems/trench-crusade/templates/actor/parts/actor-items.hbs',
+    'systems/trench-crusade/templates/actor/actor-trap-sheet.hbs',
   ]);
 };

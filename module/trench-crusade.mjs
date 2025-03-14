@@ -3,13 +3,14 @@ import { TrenchCrusadeActor } from './documents/actor.mjs';
 import { TrenchCrusadeItem } from './documents/item.mjs';
 import { TrenchCrusadeArmor } from './documents/armor.mjs';
 import { TrenchCrusadeWeapon } from './documents/weapon.mjs';
-import { TrenchCrusadePlaceableActor } from './documents/placeableActor.mjs';
+import { TrenchCrusadeTrap } from './documents/trap.mjs';
+
 // Import sheet classes.
 import { TrenchCrusadeActorSheet } from './sheets/actor-sheet.mjs';
 import { TrenchCrusadeItemSheet } from './sheets/item-sheet.mjs';
 import { TrenchCrusadeArmorSheet } from './sheets/item-armor-sheet.mjs';
 import { TrenchCrusadeWeaponSheet } from './sheets/item-weapon-sheet.mjs';
-import { TrenchCrusadePlaceableSheet } from './sheets/actor-placable.mjs';
+import { TrenchCrusadeTrapSheet } from './sheets/placeable-trap.mjs';
 
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
@@ -33,7 +34,7 @@ Hooks.once('init', function () {
     TrenchCrusadeItem,
     TrenchCrusadeArmor,
     TrenchCrusadeWeapon,
-    TrenchCrusadePlaceableActor,
+    TrenchCrusadeTrap,
     rollItemMacro,
   };
 
@@ -60,7 +61,7 @@ Hooks.once('init', function () {
   // with the Unit as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
     unit: models.TrenchCrusadeUnit,
-    placeable: models.PlaceableActorBase
+    trap: models.PlaceableTrap,
   }
   
   CONFIG.Item.documentClass = TrenchCrusadeItem;
@@ -80,11 +81,10 @@ Hooks.once('init', function () {
     label: 'TRENCHCRUSADE.SheetLabels.Actor',
   });
 
-  Actors.registerSheet(game.system.id, TrenchCrusadePlaceableSheet, {
-    makeDefault: false,
-    label: 'TRENCHCRUSADE.SheetLabels.Placeable',
+  Actors.registerSheet(game.system.id, TrenchCrusadeTrapSheet, {
+    makeDefault: true,
+    label: 'TRENCHCRUSADE.SheetLabels.Trap',
   });
-
 
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet(game.system.id, TrenchCrusadeItemSheet, {
@@ -183,7 +183,7 @@ function preUpdateToken(token, change) {
             }
           }
           break;
-        case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+        case tokenEventHandler.ACTOR_TRAP_TYPE:
           
           break;
       }
@@ -199,7 +199,7 @@ function combatStart(combat, updateData) {
     const actor = placableToken.actor;
     switch(actor.type)
     {
-      case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+      case tokenEventHandler.ACTOR_TRAP_TYPE:
         tokenEventHandler.stakePlaceable(actor, placableToken);
         break;
       case tokenEventHandler.ACTOR_UNIT_TYPE:

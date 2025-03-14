@@ -1,9 +1,7 @@
-import PlaceableActorBase from "../data/actor-placeableActor.mjs";
-
 export default class tokenEventHandler 
 {
     static ACTOR_UNIT_TYPE = Object.freeze('unit');
-    static ACTOR_PLACEABLE_TYPE = Object.freeze('placeable');
+    static ACTOR_TRAP_TYPE = Object.freeze('trap');
 
     static async stakePlaceable(actor, placableToken)
     {
@@ -79,7 +77,7 @@ export default class tokenEventHandler
         {
             case tokenEventHandler.ACTOR_UNIT_TYPE:
                 break;
-            case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+            case tokenEventHandler.ACTOR_TRAP_TYPE:
                 tokenEventHandler.#onDeletePlaceable(token)
                 break;
         }
@@ -92,7 +90,7 @@ export default class tokenEventHandler
         {
             case tokenEventHandler.ACTOR_UNIT_TYPE:
                 break;
-            case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+            case tokenEventHandler.ACTOR_TRAP_TYPE:
                 tokenEventHandler.#onMovePlaceable(token, options);
                 break;
         }
@@ -207,7 +205,7 @@ export default class tokenEventHandler
             case tokenEventHandler.ACTOR_UNIT_TYPE:
                     this.#onDropUnit(actor, token);
                 break;
-            case tokenEventHandler.ACTOR_PLACEABLE_TYPE:
+            case tokenEventHandler.ACTOR_TRAP_TYPE:
                     this.#onDropPlacable(actor, token);
                 break;
         }

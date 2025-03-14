@@ -239,7 +239,13 @@
       "unit": {
         "htmlFields" : ["biography.value", "biography.gm"]
       },
-      "placeable" : {
+      "trap" : {
+        "htmlFields" : ["description"]
+      },
+      "vehicle" : {
+        "htmlFields" : ["description"]
+      },
+      "terrain" : {
         "htmlFields" : ["description"]
       }
     },
